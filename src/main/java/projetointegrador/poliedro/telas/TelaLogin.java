@@ -5,6 +5,8 @@
 package projetointegrador.poliedro.telas;
 
 import javax.swing.JOptionPane;
+import projetointegrador.poliedro.modelo.Usuario;
+import projetointegrador.poliedro.persistencia.DAO;
 
 /**
  *
@@ -103,7 +105,27 @@ public class TelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_inserirSenhaPasswordFieldActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-     
+     try{
+            var email = inserirEmailTextField.getText();
+            var senha = new String(inserirSenhaPasswordField.getPassword());
+            var user = new Usuario(email, senha);
+            //2. Construir um objeto DAO 
+            var dao = new DAO();
+            //3. Usando o DAO, verificar se o usuario existe. Se for o caso dar 
+            // Boas vindas. Caso contrario mostrar Erro 
+            if(dao.existe(user)){
+                JOptionPane.showMessageDialog(null, "Bem vindo!!");
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Usuario/Senha inválido(s)");
+            }
+        }
+        catch(Exception e){
+            //1. Mostrar a stack trace e uma mensagem de erro para o dev
+            e.printStackTrace();
+            //2. Mostrar uma mensagem "Sistema Indisponível" para o usuario
+            JOptionPane.showMessageDialog(null, "Sistema indisponível");
+        }
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void sairButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairButtonActionPerformed

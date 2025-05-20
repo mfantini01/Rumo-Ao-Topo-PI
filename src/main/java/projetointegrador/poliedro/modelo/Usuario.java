@@ -10,7 +10,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class Usuario {
-    private String login, senha;
+    private String email, senha;
 
 }
     

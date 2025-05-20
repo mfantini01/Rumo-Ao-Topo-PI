@@ -35,6 +35,7 @@ public class TelaInicial extends javax.swing.JFrame {
     private void initComponents() {
 
         jogarButton = new javax.swing.JButton();
+        sairButton = new javax.swing.JButton();
         fundoTelaInicialLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -52,7 +53,18 @@ public class TelaInicial extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jogarButton);
-        jogarButton.setBounds(440, 550, 600, 170);
+        jogarButton.setBounds(460, 490, 600, 170);
+
+        sairButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/Design sem nome (21).png"))); // NOI18N
+        sairButton.setText("jButton1");
+        sairButton.setContentAreaFilled(false);
+        sairButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sairButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(sairButton);
+        sairButton.setBounds(520, 690, 470, 170);
 
         fundoTelaInicialLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/RUMO.png"))); // NOI18N
         getContentPane().add(fundoTelaInicialLabel);
@@ -65,6 +77,10 @@ public class TelaInicial extends javax.swing.JFrame {
         Component frame = null;
         JOptionPane.showMessageDialog(frame, "BEM VINDO");
     }//GEN-LAST:event_jogarButtonActionPerformed
+
+    private void sairButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairButtonActionPerformed
+        dispose();
+    }//GEN-LAST:event_sairButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -104,5 +120,6 @@ public class TelaInicial extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel fundoTelaInicialLabel;
     private javax.swing.JButton jogarButton;
+    private javax.swing.JButton sairButton;
     // End of variables declaration//GEN-END:variables
 }

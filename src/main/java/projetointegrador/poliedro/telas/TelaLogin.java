@@ -111,19 +111,21 @@ public class TelaLogin extends javax.swing.JFrame {
             var user = new Usuario(email, senha);
             //2. Construir um objeto DAO 
             var dao = new DAO();
-            //3. Usando o DAO, verificar se o usuario existe. Se for o caso dar 
-            // Boas vindas. Caso contrario mostrar Erro 
-            if(dao.existe(user)){
-                JOptionPane.showMessageDialog(null, "Bem vindo!!");
+            if (dao.existe(user)) {
+                String tipo = dao.obterTipo(user);
+                if ("professor".equalsIgnoreCase(tipo)) {
+                    JOptionPane.showMessageDialog(null, "Bem-vindo, professor!");
+                    // redirecionar para tela de professor, se desejar
+                } else {
+                    JOptionPane.showMessageDialog(null, "Bem-vindo!");
+                    // redirecionar para outra tela
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuário/Senha inválido(s)");
             }
-            else{
-                JOptionPane.showMessageDialog(null, "Usuario/Senha inválido(s)");
-            }
-        }
-        catch(Exception e){
-            //1. Mostrar a stack trace e uma mensagem de erro para o dev
+
+        } catch (Exception e) {
             e.printStackTrace();
-            //2. Mostrar uma mensagem "Sistema Indisponível" para o usuario
             JOptionPane.showMessageDialog(null, "Sistema indisponível");
         }
     }//GEN-LAST:event_loginButtonActionPerformed

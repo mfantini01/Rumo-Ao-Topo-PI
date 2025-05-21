@@ -74,8 +74,15 @@ public class TelaInicial extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jogarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jogarButtonActionPerformed
-        Component frame = null;
-        JOptionPane.showMessageDialog(frame, "BEM VINDO");
+        //abre a tela de login
+        TelaLogin login = new TelaLogin();
+        login.setVisible(true);
+        
+        //fecha a tela inicial
+        this.dispose();
+
+        //Component frame = null;
+        //JOptionPane.showMessageDialog(frame, "BEM VINDO");
     }//GEN-LAST:event_jogarButtonActionPerformed
 
     private void sairButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairButtonActionPerformed

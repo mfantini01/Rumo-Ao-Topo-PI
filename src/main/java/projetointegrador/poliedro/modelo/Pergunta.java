@@ -1,6 +1,12 @@
 
 package projetointegrador.poliedro.modelo;
 
+import lombok.Getter;
+import lombok.Setter;
+
+
+@Getter
+@Setter
 
 public class Pergunta {
     private int id;
@@ -15,7 +21,7 @@ public class Pergunta {
     private String serie;
     private String dificuldade;
 
-    // Construtor
+   
     public Pergunta(int id, String enunciado, String alternativaA, String alternativaB, String alternativaC,
                     String alternativaD, String alternativaE, String respostaCorreta, String materia,
                     String serie, String dificuldade) {
@@ -31,97 +37,7 @@ public class Pergunta {
         this.serie = serie;
         this.dificuldade = dificuldade;
     }
-
-    // Getters e Setters
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getEnunciado() {
-        return enunciado;
-    }
-
-    public void setEnunciado(String enunciado) {
-        this.enunciado = enunciado;
-    }
-
-    public String getAlternativaA() {
-        return alternativaA;
-    }
-
-    public void setAlternativaA(String alternativaA) {
-        this.alternativaA = alternativaA;
-    }
-
-    public String getAlternativaB() {
-        return alternativaB;
-    }
-
-    public void setAlternativaB(String alternativaB) {
-        this.alternativaB = alternativaB;
-    }
-
-    public String getAlternativaC() {
-        return alternativaC;
-    }
-
-    public void setAlternativaC(String alternativaC) {
-        this.alternativaC = alternativaC;
-    }
-
-    public String getAlternativaD() {
-        return alternativaD;
-    }
-
-    public void setAlternativaD(String alternativaD) {
-        this.alternativaD = alternativaD;
-    }
-
-    public String getAlternativaE() {
-        return alternativaE;
-    }
-
-    public void setAlternativaE(String alternativaE) {
-        this.alternativaE = alternativaE;
-    }
-
-    public String getRespostaCorreta() {
-        return respostaCorreta;
-    }
-
-    public void setRespostaCorreta(String respostaCorreta) {
-        this.respostaCorreta = respostaCorreta;
-    }
-
-    public String getMateria() {
-        return materia;
-    }
-
-    public void setMateria(String materia) {
-        this.materia = materia;
-    }
-
-    public String getSerie() {
-        return serie;
-    }
-
-    public void setSerie(String serie) {
-        this.serie = serie;
-    }
-
-    public String getDificuldade() {
-        return dificuldade;
-    }
-
-    public void setDificuldade(String dificuldade) {
-        this.dificuldade = dificuldade;
-    }
-
-    // Método para exibir a pergunta formatada
+    
     public void exibirPergunta() {
         System.out.println("Pergunta: " + enunciado);
         System.out.println("A) " + alternativaA);

@@ -112,13 +112,15 @@ public class TelaLogin extends javax.swing.JFrame {
             //2. Construir um objeto DAO 
             var dao = new DAO();
             if (dao.existe(user)) {
-                String tipo = dao.obterTipo(user);
+                String tipo = dao.obterTipo(user);  //verifica o tipo do usuario (professor ou aluno)
                 if ("professor".equalsIgnoreCase(tipo)) {
                     JOptionPane.showMessageDialog(null, "Bem-vindo, professor!");
-                    // redirecionar para tela de professor, se desejar
+                    
                 } else {
-                    JOptionPane.showMessageDialog(null, "Bem-vindo!");
-                    // redirecionar para outra tela
+                    TelaSelecionarSerie serie = new TelaSelecionarSerie();
+                    serie.setVisible(true); 
+                    this.dispose(); // se for aluno direciona para a tela de selecionar serie
+                    
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Usuário/Senha inválido(s)");

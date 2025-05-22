@@ -45,7 +45,7 @@ public class TelaLogin extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
-        sairButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/Design sem nome (19).png"))); // NOI18N
+        sairButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/BotaoSairDemaisTelas.png"))); // NOI18N
         sairButton.setBorderPainted(false);
         sairButton.setContentAreaFilled(false);
         sairButton.addActionListener(new java.awt.event.ActionListener() {
@@ -56,7 +56,7 @@ public class TelaLogin extends javax.swing.JFrame {
         getContentPane().add(sairButton);
         sairButton.setBounds(10, 875, 80, 30);
 
-        loginButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/Design sem nome (16).png"))); // NOI18N
+        loginButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/botaologin.png"))); // NOI18N
         loginButton.setToolTipText("");
         loginButton.setBorderPainted(false);
         loginButton.setContentAreaFilled(false);

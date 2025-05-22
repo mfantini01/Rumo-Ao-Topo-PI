@@ -68,18 +68,16 @@ public class TelaInicial extends javax.swing.JFrame {
 
         fundoTelaInicialLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/RUMO.png"))); // NOI18N
         getContentPane().add(fundoTelaInicialLabel);
-        fundoTelaInicialLabel.setBounds(10, 0, 1440, 960);
+        fundoTelaInicialLabel.setBounds(0, 0, 1440, 960);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jogarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jogarButtonActionPerformed
         //abre a tela de login
-        TelaLogin login = new TelaLogin();
+        var login = new TelaLogin();
         login.setVisible(true);
-        
-        //fecha a tela inicial
-        this.dispose();
+        dispose();
 
         //Component frame = null;
         //JOptionPane.showMessageDialog(frame, "BEM VINDO");

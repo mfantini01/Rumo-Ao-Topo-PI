@@ -41,7 +41,7 @@ public class TelaSelecionarSerie extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1440, 960));
         getContentPane().setLayout(null);
 
-        primeiraSerieButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/Design sem nome (20).png"))); // NOI18N
+        primeiraSerieButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/BotaoPrimeiraSerie.png"))); // NOI18N
         primeiraSerieButton.setBorderPainted(false);
         primeiraSerieButton.setContentAreaFilled(false);
         primeiraSerieButton.addActionListener(new java.awt.event.ActionListener() {
@@ -52,7 +52,7 @@ public class TelaSelecionarSerie extends javax.swing.JFrame {
         getContentPane().add(primeiraSerieButton);
         primeiraSerieButton.setBounds(220, 580, 310, 100);
 
-        segundaSerieButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/Design sem nome (22).png"))); // NOI18N
+        segundaSerieButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/BotaoSegundaSerie.png"))); // NOI18N
         segundaSerieButton.setBorderPainted(false);
         segundaSerieButton.setContentAreaFilled(false);
         segundaSerieButton.addActionListener(new java.awt.event.ActionListener() {
@@ -63,7 +63,7 @@ public class TelaSelecionarSerie extends javax.swing.JFrame {
         getContentPane().add(segundaSerieButton);
         segundaSerieButton.setBounds(550, 580, 310, 100);
 
-        terceiraSerieButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/Design sem nome (23).png"))); // NOI18N
+        terceiraSerieButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/BotaoTerceiraSerie.png"))); // NOI18N
         terceiraSerieButton.setBorderPainted(false);
         terceiraSerieButton.setContentAreaFilled(false);
         terceiraSerieButton.addActionListener(new java.awt.event.ActionListener() {
@@ -74,7 +74,7 @@ public class TelaSelecionarSerie extends javax.swing.JFrame {
         getContentPane().add(terceiraSerieButton);
         terceiraSerieButton.setBounds(880, 580, 310, 100);
 
-        sairButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/Design sem nome (19).png"))); // NOI18N
+        sairButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/BotaoSairDemaisTelas.png"))); // NOI18N
         sairButton.setBorderPainted(false);
         sairButton.setContentAreaFilled(false);
         sairButton.addActionListener(new java.awt.event.ActionListener() {

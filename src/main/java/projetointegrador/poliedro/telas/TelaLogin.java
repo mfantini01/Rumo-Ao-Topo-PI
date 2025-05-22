@@ -114,8 +114,9 @@ public class TelaLogin extends javax.swing.JFrame {
             if (dao.existe(user)) {
                 String tipo = dao.obterTipo(user);  //verifica o tipo do usuario (professor ou aluno)
                 if ("professor".equalsIgnoreCase(tipo)) {
-                    JOptionPane.showMessageDialog(null, "Bem-vindo, professor!");
-                    
+                    TelaSelecionarOpcaoProfessor opcao = new TelaSelecionarOpcaoProfessor();
+                    opcao.setVisible(true);
+                    this.dispose();
                 } else {
                     TelaSelecionarSerie serie = new TelaSelecionarSerie();
                     serie.setVisible(true); 

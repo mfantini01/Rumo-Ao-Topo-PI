@@ -47,7 +47,7 @@ public class TelaLogin extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
-        loginButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/botaologin.png"))); // NOI18N
+        loginButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/BotaoLogin.png"))); // NOI18N
         loginButton.setToolTipText("");
         loginButton.setBorderPainted(false);
         loginButton.setContentAreaFilled(false);
@@ -93,9 +93,6 @@ public class TelaLogin extends javax.swing.JFrame {
         sairButton.setBounds(10, 640, 110, 30);
 
         fundoTelaLoginJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/FundoLoginArrumado.png"))); // NOI18N
-        fundoTelaLoginJLabel.setMaximumSize(new java.awt.Dimension(1080, 720));
-        fundoTelaLoginJLabel.setMinimumSize(new java.awt.Dimension(1080, 720));
-        fundoTelaLoginJLabel.setPreferredSize(new java.awt.Dimension(1080, 720));
         getContentPane().add(fundoTelaLoginJLabel);
         fundoTelaLoginJLabel.setBounds(0, 0, 1080, 720);
 

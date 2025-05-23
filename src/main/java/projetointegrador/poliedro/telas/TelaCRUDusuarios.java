@@ -40,6 +40,7 @@ public class TelaCRUDusuarios extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1080, 720));
         setMinimumSize(new java.awt.Dimension(1080, 720));
+        setPreferredSize(new java.awt.Dimension(1080, 720));
         getContentPane().setLayout(null);
 
         adicionarUsuariosButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/BotaoAdicionarUsuarios.png"))); // NOI18N
@@ -85,9 +86,6 @@ public class TelaCRUDusuarios extends javax.swing.JFrame {
         voltarButton.setBounds(10, 630, 110, 30);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/FundoDemaisTelasArrumado.png"))); // NOI18N
-        jLabel1.setMaximumSize(new java.awt.Dimension(1080, 720));
-        jLabel1.setMinimumSize(new java.awt.Dimension(1080, 720));
-        jLabel1.setPreferredSize(new java.awt.Dimension(1080, 720));
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 1080, 720);
 

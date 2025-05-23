@@ -37,8 +37,9 @@ public class TelaSelecionarSerie extends javax.swing.JFrame {
         fundoTelaSelecionarSerieLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1440, 960));
-        setMinimumSize(new java.awt.Dimension(1440, 960));
+        setMaximumSize(new java.awt.Dimension(1080, 720));
+        setMinimumSize(new java.awt.Dimension(1080, 720));
+        setPreferredSize(new java.awt.Dimension(1080, 720));
         getContentPane().setLayout(null);
 
         primeiraSerieButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/BotaoPrimeiraSerie.png"))); // NOI18N
@@ -50,7 +51,7 @@ public class TelaSelecionarSerie extends javax.swing.JFrame {
             }
         });
         getContentPane().add(primeiraSerieButton);
-        primeiraSerieButton.setBounds(220, 580, 310, 100);
+        primeiraSerieButton.setBounds(110, 420, 260, 70);
 
         segundaSerieButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/BotaoSegundaSerie.png"))); // NOI18N
         segundaSerieButton.setBorderPainted(false);
@@ -61,7 +62,7 @@ public class TelaSelecionarSerie extends javax.swing.JFrame {
             }
         });
         getContentPane().add(segundaSerieButton);
-        segundaSerieButton.setBounds(550, 580, 310, 100);
+        segundaSerieButton.setBounds(400, 420, 260, 70);
 
         terceiraSerieButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/BotaoTerceiraSerie.png"))); // NOI18N
         terceiraSerieButton.setBorderPainted(false);
@@ -72,7 +73,7 @@ public class TelaSelecionarSerie extends javax.swing.JFrame {
             }
         });
         getContentPane().add(terceiraSerieButton);
-        terceiraSerieButton.setBounds(880, 580, 310, 100);
+        terceiraSerieButton.setBounds(690, 420, 260, 70);
 
         sairButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/BotaoSairDemaisTelas.png"))); // NOI18N
         sairButton.setBorderPainted(false);
@@ -85,9 +86,9 @@ public class TelaSelecionarSerie extends javax.swing.JFrame {
         getContentPane().add(sairButton);
         sairButton.setBounds(30, 760, 90, 30);
 
-        fundoTelaSelecionarSerieLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/TelaSelecionarSerieAluno.png"))); // NOI18N
+        fundoTelaSelecionarSerieLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/SelecioneMateriaTelaFundoArrumado.png"))); // NOI18N
         getContentPane().add(fundoTelaSelecionarSerieLabel);
-        fundoTelaSelecionarSerieLabel.setBounds(0, 0, 1440, 960);
+        fundoTelaSelecionarSerieLabel.setBounds(0, 0, 1080, 720);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

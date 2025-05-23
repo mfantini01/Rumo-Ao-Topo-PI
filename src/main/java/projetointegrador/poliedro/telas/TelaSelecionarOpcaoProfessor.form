@@ -11,7 +11,7 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[1440, 960]"/>
+      <Dimension value="[1080, 720]"/>
     </Property>
   </Properties>
   <SyntheticProperties>
@@ -38,7 +38,7 @@
     <Component class="javax.swing.JButton" name="rankingButton">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/projetointegrador/poliedro/teste/imagem/folder/BotaoRanking.png"/>
+          <Image iconType="3" name="/projetointegrador/poliedro/teste/imagem/folder/BotaoRanking (1).png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="jButton1"/>
         <Property name="borderPainted" type="boolean" value="false"/>
@@ -49,14 +49,14 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="960" y="630" width="320" height="100"/>
+          <AbsoluteConstraints x="700" y="440" width="270" height="70"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JButton" name="perguntasButton">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/projetointegrador/poliedro/teste/imagem/folder/BotaoPerguntas.png"/>
+          <Image iconType="3" name="/projetointegrador/poliedro/teste/imagem/folder/BotaoPerguntas (1).png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="jButton1"/>
         <Property name="borderPainted" type="boolean" value="false"/>
@@ -67,14 +67,14 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="170" y="630" width="320" height="100"/>
+          <AbsoluteConstraints x="100" y="440" width="270" height="70"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JButton" name="usuariosButton">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/projetointegrador/poliedro/teste/imagem/folder/BotaoUsuarios.png"/>
+          <Image iconType="3" name="/projetointegrador/poliedro/teste/imagem/folder/BotaoUsuarios (1).png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="jButton1"/>
         <Property name="borderPainted" type="boolean" value="false"/>
@@ -85,25 +85,19 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="570" y="630" width="320" height="100"/>
+          <AbsoluteConstraints x="400" y="440" width="270" height="70"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="fundoTelaProfessor">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/projetointegrador/poliedro/teste/imagem/folder/TelaSelecionarOpcaoProfessor.png"/>
-        </Property>
-        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[1440, 960]"/>
-        </Property>
-        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[1440, 960]"/>
+          <Image iconType="3" name="/projetointegrador/poliedro/teste/imagem/folder/SelecioneOp&#xe7;&#xe3;oTelaFundoArrumado.png"/>
         </Property>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="0" y="0" width="1440" height="960"/>
+          <AbsoluteConstraints x="0" y="0" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>

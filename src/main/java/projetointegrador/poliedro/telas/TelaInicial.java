@@ -69,9 +69,6 @@ public class TelaInicial extends javax.swing.JFrame {
         sairButton.setBounds(420, 510, 290, 70);
 
         fundoTelaInicialLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/TelaInicioArrumada.png"))); // NOI18N
-        fundoTelaInicialLabel.setMaximumSize(new java.awt.Dimension(1080, 720));
-        fundoTelaInicialLabel.setMinimumSize(new java.awt.Dimension(1080, 720));
-        fundoTelaInicialLabel.setPreferredSize(new java.awt.Dimension(1080, 720));
         getContentPane().add(fundoTelaInicialLabel);
         fundoTelaInicialLabel.setBounds(0, 0, 1080, 720);
 

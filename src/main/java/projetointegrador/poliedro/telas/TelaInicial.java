@@ -39,11 +39,13 @@ public class TelaInicial extends javax.swing.JFrame {
         fundoTelaInicialLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(1440, 960));
+        setMaximumSize(new java.awt.Dimension(1080, 720));
+        setMinimumSize(new java.awt.Dimension(1080, 720));
+        setPreferredSize(new java.awt.Dimension(1080, 720));
         setResizable(false);
         getContentPane().setLayout(null);
 
-        jogarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/botaojogar.png.png"))); // NOI18N
+        jogarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/BotaoJogarArrumado.png"))); // NOI18N
         jogarButton.setText("jButton1");
         jogarButton.setBorderPainted(false);
         jogarButton.setContentAreaFilled(false);
@@ -53,9 +55,9 @@ public class TelaInicial extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jogarButton);
-        jogarButton.setBounds(460, 490, 600, 170);
+        jogarButton.setBounds(350, 380, 440, 110);
 
-        sairButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/Design sem nome (21).png"))); // NOI18N
+        sairButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/BotaoSairArrumadoInicio.png"))); // NOI18N
         sairButton.setText("jButton1");
         sairButton.setContentAreaFilled(false);
         sairButton.addActionListener(new java.awt.event.ActionListener() {
@@ -64,11 +66,14 @@ public class TelaInicial extends javax.swing.JFrame {
             }
         });
         getContentPane().add(sairButton);
-        sairButton.setBounds(520, 690, 470, 170);
+        sairButton.setBounds(420, 510, 290, 70);
 
-        fundoTelaInicialLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/RUMO.png"))); // NOI18N
+        fundoTelaInicialLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/TelaInicioArrumada.png"))); // NOI18N
+        fundoTelaInicialLabel.setMaximumSize(new java.awt.Dimension(1080, 720));
+        fundoTelaInicialLabel.setMinimumSize(new java.awt.Dimension(1080, 720));
+        fundoTelaInicialLabel.setPreferredSize(new java.awt.Dimension(1080, 720));
         getContentPane().add(fundoTelaInicialLabel);
-        fundoTelaInicialLabel.setBounds(0, 0, 1440, 960);
+        fundoTelaInicialLabel.setBounds(0, 0, 1080, 720);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -34,27 +34,18 @@ public class TelaLogin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        sairButton = new javax.swing.JButton();
         loginButton = new javax.swing.JButton();
         inserirEmailTextField = new javax.swing.JTextField();
         inserirSenhaPasswordField = new javax.swing.JPasswordField();
+        sairButton = new javax.swing.JButton();
         fundoTelaLoginJLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(1440, 960));
+        setMaximumSize(new java.awt.Dimension(1080, 720));
+        setMinimumSize(new java.awt.Dimension(1080, 720));
+        setPreferredSize(new java.awt.Dimension(1080, 720));
         setResizable(false);
         getContentPane().setLayout(null);
-
-        sairButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/BotaoSairDemaisTelas.png"))); // NOI18N
-        sairButton.setBorderPainted(false);
-        sairButton.setContentAreaFilled(false);
-        sairButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sairButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(sairButton);
-        sairButton.setBounds(10, 875, 80, 30);
 
         loginButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/botaologin.png"))); // NOI18N
         loginButton.setToolTipText("");
@@ -68,7 +59,7 @@ public class TelaLogin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(loginButton);
-        loginButton.setBounds(545, 540, 350, 40);
+        loginButton.setBounds(370, 440, 350, 40);
 
         inserirEmailTextField.setMaximumSize(new java.awt.Dimension(60, 20));
         inserirEmailTextField.setMinimumSize(new java.awt.Dimension(60, 20));
@@ -79,7 +70,7 @@ public class TelaLogin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(inserirEmailTextField);
-        inserirEmailTextField.setBounds(545, 440, 350, 40);
+        inserirEmailTextField.setBounds(370, 330, 350, 40);
 
         inserirSenhaPasswordField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,11 +78,26 @@ public class TelaLogin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(inserirSenhaPasswordField);
-        inserirSenhaPasswordField.setBounds(545, 490, 350, 40);
+        inserirSenhaPasswordField.setBounds(370, 380, 350, 40);
 
-        fundoTelaLoginJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/TelaLogin.png"))); // NOI18N
+        sairButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/BotaoSairPequeno.png"))); // NOI18N
+        sairButton.setText("jButton1");
+        sairButton.setBorderPainted(false);
+        sairButton.setContentAreaFilled(false);
+        sairButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sairButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(sairButton);
+        sairButton.setBounds(10, 640, 110, 30);
+
+        fundoTelaLoginJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/FundoLoginArrumado.png"))); // NOI18N
+        fundoTelaLoginJLabel.setMaximumSize(new java.awt.Dimension(1080, 720));
+        fundoTelaLoginJLabel.setMinimumSize(new java.awt.Dimension(1080, 720));
+        fundoTelaLoginJLabel.setPreferredSize(new java.awt.Dimension(1080, 720));
         getContentPane().add(fundoTelaLoginJLabel);
-        fundoTelaLoginJLabel.setBounds(0, 0, 1440, 960);
+        fundoTelaLoginJLabel.setBounds(0, 0, 1080, 720);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -134,7 +140,7 @@ public class TelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void sairButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairButtonActionPerformed
-        dispose();
+       dispose();
     }//GEN-LAST:event_sairButtonActionPerformed
 
     /**

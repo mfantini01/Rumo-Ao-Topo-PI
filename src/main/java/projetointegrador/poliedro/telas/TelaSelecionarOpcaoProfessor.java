@@ -42,10 +42,10 @@ public class TelaSelecionarOpcaoProfessor extends javax.swing.JFrame {
         jButton2.setText("jButton2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(1440, 960));
+        setMinimumSize(new java.awt.Dimension(1080, 720));
         getContentPane().setLayout(null);
 
-        rankingButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/BotaoRanking.png"))); // NOI18N
+        rankingButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/BotaoRanking (1).png"))); // NOI18N
         rankingButton.setText("jButton1");
         rankingButton.setBorderPainted(false);
         rankingButton.setContentAreaFilled(false);
@@ -55,9 +55,9 @@ public class TelaSelecionarOpcaoProfessor extends javax.swing.JFrame {
             }
         });
         getContentPane().add(rankingButton);
-        rankingButton.setBounds(960, 630, 320, 100);
+        rankingButton.setBounds(700, 440, 270, 70);
 
-        perguntasButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/BotaoPerguntas.png"))); // NOI18N
+        perguntasButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/BotaoPerguntas (1).png"))); // NOI18N
         perguntasButton.setText("jButton1");
         perguntasButton.setBorderPainted(false);
         perguntasButton.setContentAreaFilled(false);
@@ -67,9 +67,9 @@ public class TelaSelecionarOpcaoProfessor extends javax.swing.JFrame {
             }
         });
         getContentPane().add(perguntasButton);
-        perguntasButton.setBounds(170, 630, 320, 100);
+        perguntasButton.setBounds(100, 440, 270, 70);
 
-        usuariosButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/BotaoUsuarios.png"))); // NOI18N
+        usuariosButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/BotaoUsuarios (1).png"))); // NOI18N
         usuariosButton.setText("jButton1");
         usuariosButton.setBorderPainted(false);
         usuariosButton.setContentAreaFilled(false);
@@ -79,23 +79,25 @@ public class TelaSelecionarOpcaoProfessor extends javax.swing.JFrame {
             }
         });
         getContentPane().add(usuariosButton);
-        usuariosButton.setBounds(570, 630, 320, 100);
+        usuariosButton.setBounds(400, 440, 270, 70);
 
-        fundoTelaProfessor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/TelaSelecionarOpcaoProfessor.png"))); // NOI18N
-        fundoTelaProfessor.setMaximumSize(new java.awt.Dimension(1440, 960));
-        fundoTelaProfessor.setMinimumSize(new java.awt.Dimension(1440, 960));
+        fundoTelaProfessor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/SelecioneOpçãoTelaFundoArrumado.png"))); // NOI18N
         getContentPane().add(fundoTelaProfessor);
-        fundoTelaProfessor.setBounds(0, 0, 1440, 960);
+        fundoTelaProfessor.setBounds(0, 0, 1080, 720);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void perguntasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_perguntasButtonActionPerformed
-        JOptionPane.showMessageDialog(null, "Bem vindo!");
+        var cp = new TelaCRUDperguntas();
+        cp.setVisible(true);
+        dispose();
     }//GEN-LAST:event_perguntasButtonActionPerformed
 
     private void usuariosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuariosButtonActionPerformed
-        JOptionPane.showMessageDialog(null, "Bem vindo!");
+        var uc = new TelaCRUDusuarios();
+        uc.setVisible(true);
+        dispose();
     }//GEN-LAST:event_usuariosButtonActionPerformed
 
     private void rankingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rankingButtonActionPerformed

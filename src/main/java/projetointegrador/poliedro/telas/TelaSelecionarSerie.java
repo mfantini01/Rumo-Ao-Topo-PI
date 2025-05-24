@@ -95,15 +95,21 @@ public class TelaSelecionarSerie extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void primeiraSerieButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_primeiraSerieButtonActionPerformed
-        JOptionPane.showMessageDialog(null, "Bem vindo 1° ano!");
+         var sm = new TelaSelecionarMateria();
+        sm.setVisible(true);
+        dispose();
     }//GEN-LAST:event_primeiraSerieButtonActionPerformed
 
     private void segundaSerieButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_segundaSerieButtonActionPerformed
-        JOptionPane.showMessageDialog(null, "Bem vindo 2° ano!");
+        var sm = new TelaSelecionarMateria();
+        sm.setVisible(true);
+        dispose();
     }//GEN-LAST:event_segundaSerieButtonActionPerformed
 
     private void terceiraSerieButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_terceiraSerieButtonActionPerformed
-        JOptionPane.showMessageDialog(null, "Bem vindo 3° ano!");
+         var sm = new TelaSelecionarMateria();
+        sm.setVisible(true);
+        dispose();
     }//GEN-LAST:event_terceiraSerieButtonActionPerformed
 
     private void sairButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairButtonActionPerformed

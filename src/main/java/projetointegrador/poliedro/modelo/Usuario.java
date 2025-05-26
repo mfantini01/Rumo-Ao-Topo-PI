@@ -1,23 +1,36 @@
 package projetointegrador.poliedro.modelo;
 
+
+
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import projetointegrador.poliedro.persistencia.ConnectionFactory;
 
-
-
 @Getter
 @Setter
 @AllArgsConstructor
 public class Usuario {
-    private String email, senha, tipo;
+    private String email, tipo, nome, senha;
+    private int codigo;
     
     public Usuario(String email, String senha) {
         this.email = email;
         this.senha = senha;
     }
     
+    public Usuario(String email, String senha, String tipo) {
+        this.email = email;
+        this.senha = senha;
+        this.tipo = tipo;
+}
+    
+     public Usuario(int codigo, String email, String nome) {
+        this.codigo = codigo;
+        this.email = email;
+        this.nome = nome;
+    }
     public Usuario autenticar(Usuario u) throws Exception {
     var sql = "SELECT tipo_usuario FROM tb_usuario WHERE email_usuario=? AND senha_usuario=?";
     
@@ -37,7 +50,6 @@ public class Usuario {
             }
         }
     }
-}
-
+    }
 }
     

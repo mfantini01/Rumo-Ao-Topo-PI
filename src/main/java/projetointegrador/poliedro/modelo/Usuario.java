@@ -26,11 +26,18 @@ public class Usuario {
         this.tipo = tipo;
 }
     
-     public Usuario(int codigo, String email, String nome) {
+    public Usuario(int codigo, String email, String nome) {
         this.codigo = codigo;
         this.email = email;
         this.nome = nome;
     }
+    public Usuario(String nome, String email, String senha, int codigoSerie) {
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+        this.codigo = codigoSerie; 
+    }
+     
     public Usuario autenticar(Usuario u) throws Exception {
     var sql = "SELECT tipo_usuario FROM tb_usuario WHERE email_usuario=? AND senha_usuario=?";
     

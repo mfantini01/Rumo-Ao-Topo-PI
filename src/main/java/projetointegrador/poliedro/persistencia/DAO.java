@@ -1,7 +1,10 @@
 package projetointegrador.poliedro.persistencia;
 
+import projetointegrador.poliedro.modelo.Serie;
 import projetointegrador.poliedro.modelo.Usuario;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DAO {
     public boolean existe(Usuario u) throws Exception {
@@ -56,6 +59,22 @@ public class DAO {
                 }
             }
         }
+    }
+    public List<Serie> obterSeries() throws Exception {
+        var series = new ArrayList<Serie>();
+        var sql = "SELECT id_serie, nome_serie FROM tb_serie";
+
+        try (
+                var conexao = new ConnectionFactory().obterConexao(); var ps = conexao.prepareStatement(sql); var rs = ps.executeQuery()) {
+            while (rs.next()) {
+                var codigo = rs.getInt("id_serie");
+                var nome = rs.getString("nome_serie");
+                var curso = new Serie(codigo, nome);
+                series.add(curso);
+            }
+        }
+
+        return series;
     }
 
 }

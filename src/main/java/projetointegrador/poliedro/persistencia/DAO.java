@@ -39,5 +39,24 @@ public class DAO {
             }
         }
     }
+    
+    public String obterSerie(Usuario user) throws Exception {
+        String sql = "SELECT serie_usuario FROM tb_usuario WHERE email_usuario = ? AND senha_usuario = ?";
+
+        try (
+                var conexao = new ConnectionFactory().obterConexao(); var ps = conexao.prepareStatement(sql)) {
+            ps.setString(1, user.getEmail());
+            ps.setString(2, user.getSenha());
+
+            try (var rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getString("serie_usuario");
+                } else {
+                    return null;
+                }
+            }
+        }
+    }
+
 }
 

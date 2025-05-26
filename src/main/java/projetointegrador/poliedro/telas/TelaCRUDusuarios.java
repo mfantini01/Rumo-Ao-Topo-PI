@@ -93,7 +93,9 @@ public class TelaCRUDusuarios extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void adicionarUsuariosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarUsuariosButtonActionPerformed
-        // TODO add your handling code here:
+       var uc = new CadastroUsuariosTela();
+       uc.setVisible(true);
+       dispose();
     }//GEN-LAST:event_adicionarUsuariosButtonActionPerformed
 
     private void voltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButtonActionPerformed

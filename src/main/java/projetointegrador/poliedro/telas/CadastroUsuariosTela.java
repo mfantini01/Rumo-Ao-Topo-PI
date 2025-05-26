@@ -116,6 +116,7 @@ public class CadastroUsuariosTela extends javax.swing.JFrame {
         senhaPasswordField = new javax.swing.JPasswordField();
         cadastrarButton = new javax.swing.JButton();
         selecionarSerieComboBox = new javax.swing.JComboBox<>();
+        voltarButton = new javax.swing.JButton();
         telaCadastroLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -178,6 +179,18 @@ public class CadastroUsuariosTela extends javax.swing.JFrame {
         getContentPane().add(selecionarSerieComboBox);
         selecionarSerieComboBox.setBounds(450, 410, 150, 30);
 
+        voltarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/BotaoVoltarPequeno.png"))); // NOI18N
+        voltarButton.setText("jButton1");
+        voltarButton.setBorderPainted(false);
+        voltarButton.setContentAreaFilled(false);
+        voltarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(voltarButton);
+        voltarButton.setBounds(10, 630, 110, 30);
+
         telaCadastroLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/FundoCadastroBotao.png"))); // NOI18N
         telaCadastroLabel.setMaximumSize(new java.awt.Dimension(1080, 720));
         telaCadastroLabel.setMinimumSize(new java.awt.Dimension(1080, 720));
@@ -232,6 +245,12 @@ public class CadastroUsuariosTela extends javax.swing.JFrame {
         
     }//GEN-LAST:event_selecionarSerieComboBoxActionPerformed
 
+    private void voltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButtonActionPerformed
+        var mu = new TelaCRUDusuarios();
+        mu.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_voltarButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -274,5 +293,6 @@ public class CadastroUsuariosTela extends javax.swing.JFrame {
     private javax.swing.JComboBox<Serie> selecionarSerieComboBox;
     private javax.swing.JPasswordField senhaPasswordField;
     private javax.swing.JLabel telaCadastroLabel;
+    private javax.swing.JButton voltarButton;
     // End of variables declaration//GEN-END:variables
 }

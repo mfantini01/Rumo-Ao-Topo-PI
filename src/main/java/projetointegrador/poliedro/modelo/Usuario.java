@@ -19,7 +19,20 @@ public class Usuario {
         this.email = email;
         this.senha = senha;
     }
+   
+    private int id;
+   
+    public Usuario() {
+    }
     
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+    public int getId() {
+        return id;
+        
+    }
     public Usuario(String email, String senha, String tipo) {
         this.email = email;
         this.senha = senha;

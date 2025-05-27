@@ -44,22 +44,36 @@ public class DAO {
     }
     
     public String obterSerie(Usuario user) throws Exception {
-        String sql = "SELECT serie_usuario FROM tb_usuario WHERE email_usuario = ? AND senha_usuario = ?";
+        String sql = "SELECT id_serie FROM tb_usuario WHERE email_usuario = ? AND senha_usuario = ?";
 
         try (
                 var conexao = new ConnectionFactory().obterConexao(); var ps = conexao.prepareStatement(sql)) {
+
             ps.setString(1, user.getEmail());
             ps.setString(2, user.getSenha());
 
             try (var rs = ps.executeQuery()) {
                 if (rs.next()) {
-                    return rs.getString("serie_usuario");
+                    int serie = rs.getInt("id_serie");
+
+                    // Traduz o número para o nome da série
+                    return switch (serie) {
+                        case 1 ->
+                            "1° ano";
+                        case 2 ->
+                            "2° ano";
+                        case 3 ->
+                            "3° ano";
+                        default ->
+                            null;
+                    };
                 } else {
                     return null;
                 }
             }
         }
     }
+
     public List<Serie> obterSeries() throws Exception {
         var series = new ArrayList<Serie>();
         var sql = "SELECT id_serie, nome_serie FROM tb_serie";

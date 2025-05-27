@@ -22,20 +22,21 @@ public class UsuarioDAO {
         conexao.close();
         
     }
-    public void atualizar(Usuario u) throws Exception{
+    public void atualizar(Usuario u) throws Exception {
         var fabricaDeConexoes = new ConnectionFactory();
-        var sql = "UPDATE tb_usuario SET nome_usuario=?, email_usuario=? WHERE id_usuario=?";
-        try(
-            var conexao = fabricaDeConexoes.obterConexao();
-            var ps = conexao.prepareStatement(sql);
-                
-        ){
+        var sql = "UPDATE tb_usuario SET nome_usuario=?, email_usuario=?, senha_usuario=?, id_serie=? WHERE id_usuario=?";
+        try (
+                var conexao = fabricaDeConexoes.obterConexao(); var ps = conexao.prepareStatement(sql);) {
             ps.setString(1, u.getNome());
-            ps.setString(3, u.getEmail());
-            ps.setInt(4, u.getCodigo());
-            ps.execute();
+            ps.setString(2, u.getEmail());
+            ps.setString(3, u.getSenha());
+            ps.setInt(4, u.getCodigo()); // <- código da série (id_serie)
+            ps.setInt(5, u.getId());     // <- id do usuário
+            ps.executeUpdate(); // mais claro que ps.execute()
         }
     }
+
+
     public void listar()throws Exception{
         var sql = "SELECT * FROM tb_usuario";
         var fabricaDeConexoes = new ConnectionFactory();

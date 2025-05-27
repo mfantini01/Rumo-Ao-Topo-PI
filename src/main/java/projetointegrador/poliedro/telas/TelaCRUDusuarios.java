@@ -71,6 +71,11 @@ public class TelaCRUDusuarios extends javax.swing.JFrame {
         editarUsuariosButton.setText("jButton4");
         editarUsuariosButton.setBorderPainted(false);
         editarUsuariosButton.setContentAreaFilled(false);
+        editarUsuariosButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editarUsuariosButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(editarUsuariosButton);
         editarUsuariosButton.setBounds(560, 350, 280, 70);
 
@@ -103,6 +108,12 @@ public class TelaCRUDusuarios extends javax.swing.JFrame {
         so.setVisible(true);
         dispose();
     }//GEN-LAST:event_voltarButtonActionPerformed
+
+    private void editarUsuariosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarUsuariosButtonActionPerformed
+        var editar = new TelaEditarUsuario();
+        editar.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_editarUsuariosButtonActionPerformed
 
     /**
      * @param args the command line arguments

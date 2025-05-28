@@ -1,51 +1,40 @@
 
 package projetointegrador.poliedro.modelo;
 
+import java.util.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 
 @Getter
 @Setter
-
+@AllArgsConstructor
 public class Pergunta {
-    private int id;
-    private String enunciado;
-    private String alternativaA;
-    private String alternativaB;
-    private String alternativaC;
-    private String alternativaD;
-    private String alternativaE;
-    private String respostaCorreta;
-    private String materia;
-    private String serie;
-    private String dificuldade;
+        private String enunciado;
+        private int idMateria;
+        private int idSerie;
+        private int nivelDificuldade;
+        private String dica;
+        private List<PerguntaResposta> respostas;    
+        
+        public Pergunta(String texto){
+            this.enunciado = texto;
+            respostas = new ArrayList<>();
+        }
 
-   
-    public Pergunta(int id, String enunciado, String alternativaA, String alternativaB, String alternativaC,
-                    String alternativaD, String alternativaE, String respostaCorreta, String materia,
-                    String serie, String dificuldade) {
-        this.id = id;
-        this.enunciado = enunciado;
-        this.alternativaA = alternativaA;
-        this.alternativaB = alternativaB;
-        this.alternativaC = alternativaC;
-        this.alternativaD = alternativaD;
-        this.alternativaE = alternativaE;
-        this.respostaCorreta = respostaCorreta;
-        this.materia = materia;
-        this.serie = serie;
-        this.dificuldade = dificuldade;
+    @Override
+    public String toString() {
+        return "Pergunta{" + "texto=" + enunciado + ", respostas=" + respostas + '}';
     }
+        
+        
+
+    void exibirPergunta() {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+
     
-    public void exibirPergunta() {
-        System.out.println("Pergunta: " + enunciado);
-        System.out.println("A) " + alternativaA);
-        System.out.println("B) " + alternativaB);
-        System.out.println("C) " + alternativaC);
-        System.out.println("D) " + alternativaD);
-        System.out.println("E) " + alternativaE);
-    }
 }
 
     

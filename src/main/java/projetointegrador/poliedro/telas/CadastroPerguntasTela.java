@@ -132,6 +132,7 @@ public class CadastroPerguntasTela extends javax.swing.JFrame {
         materiaComboBox = new javax.swing.JComboBox<>();
         serieComboBox = new javax.swing.JComboBox<>();
         dificuldadeComboBox = new javax.swing.JComboBox<>();
+        voltarButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -277,7 +278,7 @@ public class CadastroPerguntasTela extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(720, 580, 260, 90);
+        jButton1.setBounds(720, 540, 260, 90);
         getContentPane().add(dicaTextField);
         dicaTextField.setBounds(710, 260, 290, 50);
 
@@ -318,6 +319,18 @@ serieComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new Serie[] {
     });
     getContentPane().add(dificuldadeComboBox);
     dificuldadeComboBox.setBounds(870, 370, 170, 40);
+
+    voltarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/BotaoVoltarPequeno.png"))); // NOI18N
+    voltarButton.setText("jButton2");
+    voltarButton.setBorderPainted(false);
+    voltarButton.setContentAreaFilled(false);
+    voltarButton.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            voltarButtonActionPerformed(evt);
+        }
+    });
+    getContentPane().add(voltarButton);
+    voltarButton.setBounds(810, 640, 100, 40);
 
     jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/FundoTelaCadastrarPergunta.png"))); // NOI18N
     jLabel1.setMaximumSize(new java.awt.Dimension(1080, 720));
@@ -416,6 +429,12 @@ serieComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new Serie[] {
         // TODO add your handling code here:
     }//GEN-LAST:event_dificuldadeComboBoxActionPerformed
 
+    private void voltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButtonActionPerformed
+       var mp = new TelaCRUDperguntas();
+        mp.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_voltarButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -476,5 +495,6 @@ serieComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new Serie[] {
     private javax.swing.JScrollPane perguntaScrollPane;
     private javax.swing.JTextArea perguntaTextArea;
     private javax.swing.JComboBox<Serie> serieComboBox;
+    private javax.swing.JButton voltarButton;
     // End of variables declaration//GEN-END:variables
 }

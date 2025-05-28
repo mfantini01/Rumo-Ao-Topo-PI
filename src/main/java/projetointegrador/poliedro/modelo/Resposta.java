@@ -6,35 +6,23 @@ import lombok.*;
 
 @Getter
 @Setter
-@ToString
+
 
 public class Resposta {
-    private int idResposta;
-    private String textoResposta;
-    private boolean correta;
-    private Pergunta pergunta; // Referência à pergunta associada
+    private int codigo;
+    private String texto;
+    
+     
 
-    // Construtor vazio
-    public Resposta() {
+    
+    public Resposta(String texto) {
+        this.texto = texto;
     }
-
-    // Construtor completo
-    public Resposta(int idResposta, String textoResposta, boolean correta, Pergunta pergunta) {
-        this.idResposta = idResposta;
-        this.textoResposta = textoResposta;
-        this.correta = correta;
-        this.pergunta = pergunta;
+    @Override
+    public String toString(){
+        return "Resposta{" + "texto=" + texto +'}';
     }
-
-
-    // Método para exibir a resposta
-    public void exibirResposta() {
-        System.out.println("Resposta: " + textoResposta);
-        System.out.println("Correta: " + (correta ? "Sim" : "Não"));
-        if (pergunta != null) {
-            System.out.println("Pergunta relacionada:");
-            pergunta.exibirPergunta(); // Usa método da classe Pergunta
-        }
-    }
+    
+    
 }
 

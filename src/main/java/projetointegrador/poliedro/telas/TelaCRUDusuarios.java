@@ -31,8 +31,6 @@ public class TelaCRUDusuarios extends javax.swing.JFrame {
     private void initComponents() {
 
         adicionarUsuariosButton = new javax.swing.JButton();
-        excluirUsuariosButton = new javax.swing.JButton();
-        consultarUsuariosButton = new javax.swing.JButton();
         editarUsuariosButton = new javax.swing.JButton();
         voltarButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -52,20 +50,7 @@ public class TelaCRUDusuarios extends javax.swing.JFrame {
             }
         });
         getContentPane().add(adicionarUsuariosButton);
-        adicionarUsuariosButton.setBounds(250, 350, 280, 70);
-
-        excluirUsuariosButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/BotaoExcluirUsuarios.png"))); // NOI18N
-        excluirUsuariosButton.setBorderPainted(false);
-        excluirUsuariosButton.setContentAreaFilled(false);
-        getContentPane().add(excluirUsuariosButton);
-        excluirUsuariosButton.setBounds(560, 450, 280, 70);
-
-        consultarUsuariosButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/BotaoConsultarUsuarios.png"))); // NOI18N
-        consultarUsuariosButton.setText("jButton3");
-        consultarUsuariosButton.setBorderPainted(false);
-        consultarUsuariosButton.setContentAreaFilled(false);
-        getContentPane().add(consultarUsuariosButton);
-        consultarUsuariosButton.setBounds(260, 450, 270, 70);
+        adicionarUsuariosButton.setBounds(250, 400, 280, 70);
 
         editarUsuariosButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/BotaoEditarUsuarios.png"))); // NOI18N
         editarUsuariosButton.setText("jButton4");
@@ -77,7 +62,7 @@ public class TelaCRUDusuarios extends javax.swing.JFrame {
             }
         });
         getContentPane().add(editarUsuariosButton);
-        editarUsuariosButton.setBounds(560, 350, 280, 70);
+        editarUsuariosButton.setBounds(560, 400, 280, 70);
 
         voltarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/BotaoVoltarPequeno.png"))); // NOI18N
         voltarButton.setBorderPainted(false);
@@ -152,9 +137,7 @@ public class TelaCRUDusuarios extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton adicionarUsuariosButton;
-    private javax.swing.JButton consultarUsuariosButton;
     private javax.swing.JButton editarUsuariosButton;
-    private javax.swing.JButton excluirUsuariosButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton voltarButton;
     // End of variables declaration//GEN-END:variables

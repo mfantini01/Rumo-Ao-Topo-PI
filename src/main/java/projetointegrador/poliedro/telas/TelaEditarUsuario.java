@@ -4,6 +4,7 @@
  */
 package projetointegrador.poliedro.telas;
 
+import java.awt.Color;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.sql.PreparedStatement;
@@ -35,6 +36,26 @@ public class TelaEditarUsuario extends javax.swing.JFrame {
         comboSerie.addItem("3");
         carregarUsuariosNaTabela();
         setLocationRelativeTo(null);
+        
+        txtBuscar.setText("Pesquise o nome desejado");
+        txtBuscar.setForeground(Color.GRAY);
+
+        txtBuscar.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                if (txtBuscar.getText().equals("Pesquise o nome desejado")) {
+                    txtBuscar.setText("");
+                    txtBuscar.setForeground(Color.BLACK);
+                }
+            }
+
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                if (txtBuscar.getText().isEmpty()) {
+                    txtBuscar.setForeground(Color.GRAY);
+                    txtBuscar.setText("Pesquise o nome desejado");
+                }
+            }
+
+        });
         
         txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -114,7 +135,7 @@ public class TelaEditarUsuario extends javax.swing.JFrame {
         getContentPane().add(tabela);
         tabela.setBounds(40, 220, 690, 420);
 
-        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/BotaoEditar.png"))); // NOI18N
+        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/BotaoCadastrar_1.png"))); // NOI18N
         btnSalvar.setText("jButton1");
         btnSalvar.setBorderPainted(false);
         btnSalvar.setContentAreaFilled(false);
@@ -124,9 +145,9 @@ public class TelaEditarUsuario extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSalvar);
-        btnSalvar.setBounds(750, 500, 170, 60);
+        btnSalvar.setBounds(740, 510, 160, 60);
 
-        btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/BotaoExcluir.png"))); // NOI18N
+        btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/BotaoExcluirVermelho.png"))); // NOI18N
         btnExcluir.setBorderPainted(false);
         btnExcluir.setContentAreaFilled(false);
         btnExcluir.addActionListener(new java.awt.event.ActionListener() {
@@ -135,7 +156,7 @@ public class TelaEditarUsuario extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnExcluir);
-        btnExcluir.setBounds(930, 510, 120, 50);
+        btnExcluir.setBounds(900, 510, 150, 60);
         getContentPane().add(txtEmail);
         txtEmail.setBounds(750, 320, 300, 40);
         getContentPane().add(txtSenha);

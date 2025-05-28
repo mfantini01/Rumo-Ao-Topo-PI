@@ -5,6 +5,8 @@ import projetointegrador.poliedro.modelo.Usuario;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import projetointegrador.poliedro.modelo.Materia;
+import projetointegrador.poliedro.modelo.NivelDificuldade;
 
 public class DAO {
     public boolean existe(Usuario u) throws Exception {
@@ -76,6 +78,38 @@ public class DAO {
 
         return series;
     }
+    public List<Materia> obterMaterias() throws Exception {
+        var materias = new ArrayList<Materia>();
+        var sql = "SELECT id_materia, nome_materia FROM tb_materia";
 
+        try (
+                var conexao = new ConnectionFactory().obterConexao(); var ps = conexao.prepareStatement(sql); var rs = ps.executeQuery()) {
+            while (rs.next()) {
+                var codigo = rs.getInt("id_materia");
+                var nome = rs.getString("nome_materia");
+                var curso = new Materia(codigo, nome);
+                materias.add(curso);
+            }
+        }
+
+        return materias;
+    }
+    
+    public List<NivelDificuldade> obterNivel() throws Exception {
+        var dificuldade = new ArrayList<NivelDificuldade>();
+        var sql = "SELECT id_nivel, dificuldade FROM tb_nivel_dificuldade";
+
+        try (
+                var conexao = new ConnectionFactory().obterConexao(); var ps = conexao.prepareStatement(sql); var rs = ps.executeQuery()) {
+            while (rs.next()) {
+                var codigo = rs.getInt("id_materia");
+                var nivel = rs.getString("nome_materia");
+                var nd = new NivelDificuldade(codigo, nivel);
+                dificuldade.add(nd);
+            }
+        }
+
+        return dificuldade;
+    }
 }
 

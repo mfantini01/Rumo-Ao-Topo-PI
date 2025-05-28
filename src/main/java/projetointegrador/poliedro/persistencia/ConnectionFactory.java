@@ -14,6 +14,23 @@ public class ConnectionFactory {
     private String user = dotenv.get("USER");
     private String password = dotenv.get("PASSWORD");  
 
+    public ConnectionFactory() {
+        Dotenv dotenv = Dotenv.load();
+        this.host = "mysql-f3dbf01-matheus-4ae4.l.aivencloud.com";
+        this.port = "22564";
+        this.db = "rumo_ao_topo";
+        this.user = dotenv.get("USER");
+        this.password = dotenv.get("PASSWORD");
+    }
+    
+    // construtor de testes
+    public ConnectionFactory(String host, String port, String db, String user, String password) {
+        this.host = host;
+        this.port = port;
+        this.db = db;
+        this.user = user;
+        this.password = password;
+    }
     
     public Connection obterConexao() throws Exception{
         var s = String.format(

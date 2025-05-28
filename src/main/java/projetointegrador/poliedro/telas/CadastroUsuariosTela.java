@@ -126,7 +126,7 @@ public class CadastroUsuariosTela extends javax.swing.JFrame {
 
         nomeTextField.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         nomeTextField.setToolTipText("");
-        nomeTextField.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        nomeTextField.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         nomeTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nomeTextFieldActionPerformed(evt);
@@ -137,7 +137,7 @@ public class CadastroUsuariosTela extends javax.swing.JFrame {
 
         emailTextField.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         emailTextField.setToolTipText("");
-        emailTextField.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        emailTextField.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         emailTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 emailTextFieldActionPerformed(evt);
@@ -146,6 +146,7 @@ public class CadastroUsuariosTela extends javax.swing.JFrame {
         getContentPane().add(emailTextField);
         emailTextField.setBounds(350, 310, 350, 40);
 
+        senhaPasswordField.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         senhaPasswordField.setBorder(null);
         senhaPasswordField.setOpaque(true);
         senhaPasswordField.addActionListener(new java.awt.event.ActionListener() {
@@ -192,9 +193,6 @@ public class CadastroUsuariosTela extends javax.swing.JFrame {
         voltarButton.setBounds(10, 630, 110, 30);
 
         telaCadastroLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/FundoCadastroBotao.png"))); // NOI18N
-        telaCadastroLabel.setMaximumSize(new java.awt.Dimension(1080, 720));
-        telaCadastroLabel.setMinimumSize(new java.awt.Dimension(1080, 720));
-        telaCadastroLabel.setPreferredSize(new java.awt.Dimension(1080, 720));
         getContentPane().add(telaCadastroLabel);
         telaCadastroLabel.setBounds(0, 0, 1080, 720);
 

@@ -5,6 +5,7 @@
 package projetointegrador.poliedro.telas;
 
 import javax.swing.JOptionPane;
+import projetointegrador.poliedro.modelo.ControladorTransicao;
 
 /**
  *
@@ -186,39 +187,75 @@ public class TelaSelecionarMateria extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void geometriaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_geometriaButtonActionPerformed
-       JOptionPane.showMessageDialog(null, "Bem vindo!");
+        ControladorTransicao controlador = new ControladorTransicao();
+        controlador.iniciarPartida();
+
+        // Fecha a tela atual de seleção, se quiser
+        this.dispose();
     }//GEN-LAST:event_geometriaButtonActionPerformed
 
     private void matematicaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matematicaButtonActionPerformed
-      JOptionPane.showMessageDialog(null, "Bem vindo!");
+        ControladorTransicao controlador = new ControladorTransicao();
+        controlador.iniciarPartida();
+
+        // Fecha a tela atual de seleção, se quiser
+        this.dispose();
     }//GEN-LAST:event_matematicaButtonActionPerformed
 
     private void portuguesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_portuguesButtonActionPerformed
-      JOptionPane.showMessageDialog(null, "Bem vindo!");
+        ControladorTransicao controlador = new ControladorTransicao();
+        controlador.iniciarPartida();
+
+        // Fecha a tela atual de seleção, se quiser
+        this.dispose();
     }//GEN-LAST:event_portuguesButtonActionPerformed
 
     private void quimicaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quimicaButtonActionPerformed
-      JOptionPane.showMessageDialog(null, "Bem vindo!");
+        ControladorTransicao controlador = new ControladorTransicao();
+        controlador.iniciarPartida();
+
+        // Fecha a tela atual de seleção, se quiser
+        this.dispose();
     }//GEN-LAST:event_quimicaButtonActionPerformed
 
     private void fisicaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fisicaButtonActionPerformed
-       JOptionPane.showMessageDialog(null, "Bem vindo!");
+        ControladorTransicao controlador = new ControladorTransicao();
+        controlador.iniciarPartida();
+
+        // Fecha a tela atual de seleção, se quiser
+        this.dispose();
     }//GEN-LAST:event_fisicaButtonActionPerformed
 
     private void biologiaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_biologiaButtonActionPerformed
-       JOptionPane.showMessageDialog(null, "Bem vindo!");
+        ControladorTransicao controlador = new ControladorTransicao();
+        controlador.iniciarPartida();
+
+        // Fecha a tela atual de seleção, se quiser
+        this.dispose();
     }//GEN-LAST:event_biologiaButtonActionPerformed
 
     private void historiaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historiaButtonActionPerformed
-        JOptionPane.showMessageDialog(null, "Bem vindo!");
+        ControladorTransicao controlador = new ControladorTransicao();
+        controlador.iniciarPartida();
+
+        // Fecha a tela atual de seleção, se quiser
+        this.dispose();
     }//GEN-LAST:event_historiaButtonActionPerformed
 
     private void geografiaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_geografiaButtonActionPerformed
-       JOptionPane.showMessageDialog(null, "Bem vindo!");
+        ControladorTransicao controlador = new ControladorTransicao();
+        controlador.iniciarPartida();
+
+        // Fecha a tela atual de seleção, se quiser
+        this.dispose();
     }//GEN-LAST:event_geografiaButtonActionPerformed
 
     private void todasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_todasButtonActionPerformed
-        JOptionPane.showMessageDialog(null, "Bem vindo!");
+        ControladorTransicao controlador = new ControladorTransicao();
+        controlador.iniciarPartida();
+
+        // Fecha a tela atual de seleção, se quiser
+        this.dispose();
     }//GEN-LAST:event_todasButtonActionPerformed
 
     private void voltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButtonActionPerformed

@@ -17,6 +17,9 @@ public class TelaEditarPerguntas extends javax.swing.JFrame {
         ajustarTamanhoColunas();  // Ajusta o tamanho das colunas
         carregarPerguntasNaTabela();
         preencherCombos();
+        tabelaPergunta.getColumnModel().getColumn(4).setMinWidth(0);
+        tabelaPergunta.getColumnModel().getColumn(4).setMaxWidth(0);
+        tabelaPergunta.getColumnModel().getColumn(4).setWidth(0);
 
         // Para campo de texto (pesquisa do enunciado)
         txtPesquisarEnunciado.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
@@ -101,7 +104,7 @@ public class TelaEditarPerguntas extends javax.swing.JFrame {
             String serieFiltro = comboSerie.getSelectedItem().toString();
             String dificuldadeFiltro = comboDificuldade.getSelectedItem().toString();
 
-            DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
+            DefaultTableModel modelo = (DefaultTableModel) tabelaPergunta.getModel();
             modelo.setRowCount(0); // limpa a tabela
 
             for (String[] linha : listaPerguntasCache) {
@@ -134,7 +137,7 @@ public class TelaEditarPerguntas extends javax.swing.JFrame {
 
 
     private void ajustarTamanhoColunas() {
-        TableColumnModel colunaModel = tabela.getColumnModel();
+        TableColumnModel colunaModel = tabelaPergunta.getColumnModel();
 
         colunaModel.getColumn(0).setPreferredWidth(250); // Pergunta
         colunaModel.getColumn(1).setPreferredWidth(80);  // Série
@@ -156,7 +159,7 @@ public class TelaEditarPerguntas extends javax.swing.JFrame {
                 modelo.addRow(linha);
             }
 
-            tabela.setModel(modelo);
+            tabelaPergunta.setModel(modelo);
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Erro ao carregar perguntas: " + e.getMessage());
@@ -175,7 +178,7 @@ public class TelaEditarPerguntas extends javax.swing.JFrame {
     private void initComponents() {
 
         tabelaPerguntas = new javax.swing.JScrollPane();
-        tabela = new javax.swing.JTable();
+        tabelaPergunta = new javax.swing.JTable();
         editarButton = new javax.swing.JButton();
         excluirButton = new javax.swing.JButton();
         voltarButton = new javax.swing.JButton();
@@ -191,7 +194,7 @@ public class TelaEditarPerguntas extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1080, 720));
         getContentPane().setLayout(null);
 
-        tabela.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaPergunta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -210,16 +213,16 @@ public class TelaEditarPerguntas extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        tabela.addAncestorListener(new javax.swing.event.AncestorListener() {
+        tabelaPergunta.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                tabelaAncestorAdded(evt);
+                tabelaPerguntaAncestorAdded(evt);
             }
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
-        tabelaPerguntas.setViewportView(tabela);
+        tabelaPerguntas.setViewportView(tabelaPergunta);
 
         getContentPane().add(tabelaPerguntas);
         tabelaPerguntas.setBounds(30, 220, 740, 410);
@@ -289,17 +292,39 @@ public class TelaEditarPerguntas extends javax.swing.JFrame {
     }//GEN-LAST:event_editarButtonActionPerformed
 
     private void excluirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirButtonActionPerformed
-        int resposta = JOptionPane.showConfirmDialog(
-            this,
-            "Você tem certeza que quer excluir essa pergunta?",
-            "Confirmar exclusão",
-            JOptionPane.YES_NO_OPTION);
-        
-        if(resposta == JOptionPane.YES_OPTION){
-            System.out.println("Pergunta excluída com sucesso!");
-        }else{
-            System.out.println("Exclusão cancelada!");
-        
+        int linhaSelecionada = tabelaPergunta.getSelectedRow();
+        if (linhaSelecionada != -1) {
+            int colunaID = tabelaPergunta.getColumnCount() - 1;
+            int idPergunta = Integer.parseInt(tabelaPergunta.getValueAt(linhaSelecionada, colunaID).toString());
+            int resposta = JOptionPane.showConfirmDialog(
+                    null,
+                    "Deseja realmente excluir o usuário?",
+                    "Confirmação",
+                    JOptionPane.YES_NO_OPTION
+            );
+            if (resposta == JOptionPane.YES_OPTION) {
+                try {
+                    var conexao = new ConnectionFactory().obterConexao();
+                    var psResposta = conexao.prepareStatement("DELETE FROM tb_pergunta_resposta WHERE id_pergunta = ?");
+                    psResposta.setInt(1, idPergunta);
+                    psResposta.execute();
+                    psResposta.close();
+
+                    var conexao2 = new ConnectionFactory().obterConexao();
+                    var ps = conexao.prepareStatement("DELETE FROM tb_pergunta WHERE id_pergunta=?");
+                    ps.setInt(1, idPergunta);
+                    ps.execute();
+                    ps.close();
+                    conexao.close();
+
+                    carregarPerguntasNaTabela(); // <-- esse método precisa recarregar os dados da tabela
+                    JOptionPane.showMessageDialog(null, "Pergunta excluído com sucesso!");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    JOptionPane.showMessageDialog(null, "Erro ao excluir pergunta");
+                }
+            }
+
         }
      
     }//GEN-LAST:event_excluirButtonActionPerformed
@@ -310,9 +335,9 @@ public class TelaEditarPerguntas extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_voltarButtonActionPerformed
 
-    private void tabelaAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tabelaAncestorAdded
+    private void tabelaPerguntaAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tabelaPerguntaAncestorAdded
         // TODO add your handling code here:
-    }//GEN-LAST:event_tabelaAncestorAdded
+    }//GEN-LAST:event_tabelaPerguntaAncestorAdded
  public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -335,7 +360,7 @@ public class TelaEditarPerguntas extends javax.swing.JFrame {
     private javax.swing.JButton editarButton;
     private javax.swing.JButton excluirButton;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTable tabela;
+    private javax.swing.JTable tabelaPergunta;
     private javax.swing.JScrollPane tabelaPerguntas;
     private javax.swing.JTextField txtPesquisarEnunciado;
     private javax.swing.JButton voltarButton;

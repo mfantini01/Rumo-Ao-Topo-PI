@@ -14,6 +14,7 @@ import projetointegrador.poliedro.persistencia.ConnectionFactory;
 public class Usuario {
     private String email, tipo, nome, senha;
     private int codigo;
+    private int pontuacaoMensal;
     
     public Usuario(String email, String senha) {
         this.email = email;

@@ -37,6 +37,7 @@ public class TelaSelecionarOpcaoProfessor extends javax.swing.JFrame {
         rankingButton = new javax.swing.JButton();
         perguntasButton = new javax.swing.JButton();
         usuariosButton = new javax.swing.JButton();
+        sairButton = new javax.swing.JButton();
         fundoTelaProfessor = new javax.swing.JLabel();
 
         jButton2.setText("jButton2");
@@ -81,6 +82,18 @@ public class TelaSelecionarOpcaoProfessor extends javax.swing.JFrame {
         getContentPane().add(usuariosButton);
         usuariosButton.setBounds(400, 440, 270, 70);
 
+        sairButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/BotaoSairPequeno.png"))); // NOI18N
+        sairButton.setText("jButton1");
+        sairButton.setBorderPainted(false);
+        sairButton.setContentAreaFilled(false);
+        sairButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sairButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(sairButton);
+        sairButton.setBounds(10, 640, 100, 30);
+
         fundoTelaProfessor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/SelecioneOpçãoTelaFundoArrumado.png"))); // NOI18N
         getContentPane().add(fundoTelaProfessor);
         fundoTelaProfessor.setBounds(0, 0, 1080, 720);
@@ -103,6 +116,10 @@ public class TelaSelecionarOpcaoProfessor extends javax.swing.JFrame {
     private void rankingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rankingButtonActionPerformed
         JOptionPane.showMessageDialog(null, "Bem vindo!");
     }//GEN-LAST:event_rankingButtonActionPerformed
+
+    private void sairButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairButtonActionPerformed
+        dispose();
+    }//GEN-LAST:event_sairButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -144,6 +161,7 @@ public class TelaSelecionarOpcaoProfessor extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton perguntasButton;
     private javax.swing.JButton rankingButton;
+    private javax.swing.JButton sairButton;
     private javax.swing.JButton usuariosButton;
     // End of variables declaration//GEN-END:variables
 }

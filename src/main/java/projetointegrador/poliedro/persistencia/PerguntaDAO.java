@@ -4,9 +4,11 @@ package projetointegrador.poliedro.persistencia;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import projetointegrador.poliedro.modelo.Pergunta;
 import projetointegrador.poliedro.modelo.PerguntaResposta;
-import projetointegrador.poliedro.modelo.Resposta;
+
 
 public class PerguntaDAO {
 
@@ -61,6 +63,67 @@ public class PerguntaDAO {
 
             conexao.close();
         }
+        
+        public List<String[]> listarPerguntasSimples() throws Exception {
+        var lista = new ArrayList<String[]>();
+
+        var sql = """
+        SELECT 
+            p.enunciado,
+            s.nome_serie,
+            p.dificuldade,
+            m.nome_materia
+        FROM 
+            tb_pergunta p
+        JOIN 
+            tb_serie s ON p.id_serie = s.id_serie
+        JOIN 
+            tb_materia m ON p.id_materia = m.id_materia
+    """;
+
+        var fabricaDeConexoes = new ConnectionFactory();
+        var conexao = fabricaDeConexoes.obterConexao();
+
+        var ps = conexao.prepareStatement(sql);
+        var rs = ps.executeQuery();
+
+        while (rs.next()) {
+            String[] linha = new String[4];
+            linha[0] = rs.getString("enunciado");
+            linha[1] = rs.getString("nome_serie");
+
+            // Conversão de dificuldade (1, 2, 3) para texto
+            int nivel = rs.getInt("dificuldade");
+            String dificuldadeTexto;
+            switch (nivel) {
+                case 1 ->
+                    dificuldadeTexto = "Fácil";
+                case 2 ->
+                    dificuldadeTexto = "Médio";
+                case 3 ->
+                    dificuldadeTexto = "Difícil";
+                default ->
+                    dificuldadeTexto = "Desconhecido";
+            }
+
+            linha[2] = dificuldadeTexto;
+            linha[3] = rs.getString("nome_materia");
+
+            lista.add(linha);
+        }
+
+        rs.close();
+        ps.close();
+        conexao.close();
+
+        return lista;
+    }
+        
+        
+
+
+
+
     }
 
 

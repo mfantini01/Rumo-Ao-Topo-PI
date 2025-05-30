@@ -1,15 +1,137 @@
 
 package projetointegrador.poliedro.telas;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
+import projetointegrador.poliedro.modelo.Pergunta;
+import projetointegrador.poliedro.persistencia.ConnectionFactory;
+import projetointegrador.poliedro.persistencia.PerguntaDAO;
 
 public class TelaEditarPerguntas extends javax.swing.JFrame {
     public TelaEditarPerguntas() {
         initComponents();  // Primeiro inicializa os componentes
         setLocationRelativeTo(null);  // Centraliza a janela
         ajustarTamanhoColunas();  // Ajusta o tamanho das colunas
+        carregarPerguntasNaTabela();
+        preencherCombos();
+
+        // Para campo de texto (pesquisa do enunciado)
+        txtPesquisarEnunciado.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
+            public void insertUpdate(javax.swing.event.DocumentEvent e) {
+                atualizarTabelaComFiltros();
+            }
+
+            public void removeUpdate(javax.swing.event.DocumentEvent e) {
+                atualizarTabelaComFiltros();
+            }
+
+            public void changedUpdate(javax.swing.event.DocumentEvent e) {
+                atualizarTabelaComFiltros();
+            }
+        });
+
+        comboMateria.addActionListener(e -> atualizarTabelaComFiltros());
+        comboSerie.addActionListener(e -> atualizarTabelaComFiltros());
+        comboDificuldade.addActionListener(e -> atualizarTabelaComFiltros());
+
+        // ✅ Carrega as perguntas com tratamento de erro
+        try {
+            PerguntaDAO dao = new PerguntaDAO();
+            listaPerguntasCache = dao.listarPerguntasSimples(); // Carrega tudo uma vez só
+            atualizarTabelaComFiltros(); // Exibe na tabela
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erro ao carregar perguntas: " + e.getMessage());
+            listaPerguntasCache = new ArrayList<>(); // Evita NullPointerException
+        }
     }
+
+    
+    
+    
+    private List<String[]> listaPerguntasCache = new ArrayList<>();
+    
+    
+    
+    private void preencherCombos() {
+        try {
+            var conexao = new ConnectionFactory().obterConexao();
+
+            // MATÉRIA
+            var psMat = conexao.prepareStatement("SELECT nome_materia FROM tb_materia");
+            var rsMat = psMat.executeQuery();
+            comboMateria.addItem("Todas");
+            while (rsMat.next()) {
+                comboMateria.addItem(rsMat.getString("nome_materia"));
+            }
+
+            // SÉRIE
+            var psSerie = conexao.prepareStatement("SELECT nome_serie FROM tb_serie");
+            var rsSerie = psSerie.executeQuery();
+            comboSerie.addItem("Todas");
+            while (rsSerie.next()) {
+                comboSerie.addItem(rsSerie.getString("nome_serie"));
+            }
+
+            // DIFICULDADE: apenas com nomes amigáveis
+            comboDificuldade.removeAllItems(); // limpa antes de adicionar
+            comboDificuldade.addItem("Todas");
+            comboDificuldade.addItem("Fácil");
+            comboDificuldade.addItem("Médio");
+            comboDificuldade.addItem("Difícil");
+
+            rsMat.close();
+            rsSerie.close();
+            psMat.close();
+            psSerie.close();
+            conexao.close();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erro ao preencher os filtros: " + e.getMessage());
+        }
+    }
+
+    
+    private void atualizarTabelaComFiltros() {
+        try {
+            String enunciadoFiltro = txtPesquisarEnunciado.getText().toLowerCase().trim();
+            String materiaFiltro = comboMateria.getSelectedItem().toString();
+            String serieFiltro = comboSerie.getSelectedItem().toString();
+            String dificuldadeFiltro = comboDificuldade.getSelectedItem().toString();
+
+            DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
+            modelo.setRowCount(0); // limpa a tabela
+
+            for (String[] linha : listaPerguntasCache) {
+                String enunciado = linha[0].toLowerCase();
+                String serie = linha[1];
+                String dificuldade = linha[2]; // Ex: "1", "2", "3"
+                String materia = linha[3];
+                
+                System.out.println("Dificuldade da linha: " + dificuldade);
+
+                boolean condEnunciado = enunciado.contains(enunciadoFiltro);
+                boolean condMateria = materiaFiltro.equals("Todas") || materia.equalsIgnoreCase(materiaFiltro);
+                boolean condSerie = serieFiltro.equals("Todas") || serie.equalsIgnoreCase(serieFiltro);
+                boolean condDificuldade = dificuldadeFiltro.equals("Todas") || dificuldade.equalsIgnoreCase(dificuldadeFiltro);
+                
+
+                if (condEnunciado && condMateria && condSerie && condDificuldade) {
+                    modelo.addRow(linha);
+                }
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erro ao aplicar filtros: " + e.getMessage());
+        }
+    }
+
+
+
+
+
 
     private void ajustarTamanhoColunas() {
         TableColumnModel colunaModel = tabela.getColumnModel();
@@ -19,6 +141,31 @@ public class TelaEditarPerguntas extends javax.swing.JFrame {
         colunaModel.getColumn(2).setPreferredWidth(100); // Nível de dificuldade
         colunaModel.getColumn(3).setPreferredWidth(100); // Resposta correta
     }
+    
+    private void carregarPerguntasNaTabela() {
+        try {
+            PerguntaDAO dao = new PerguntaDAO();
+            List<String[]> perguntas = dao.listarPerguntasSimples();
+
+            // Cria um novo modelo para a tabela
+            String[] colunas = {"Enunciado", "Série", "Dificuldade", "Matéria"};
+            DefaultTableModel modelo = new DefaultTableModel(colunas, 0);
+
+            // Adiciona cada pergunta à tabela
+            for (String[] linha : perguntas) {
+                modelo.addRow(linha);
+            }
+
+            tabela.setModel(modelo);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erro ao carregar perguntas: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+
+
 
    
     
@@ -32,6 +179,10 @@ public class TelaEditarPerguntas extends javax.swing.JFrame {
         editarButton = new javax.swing.JButton();
         excluirButton = new javax.swing.JButton();
         voltarButton = new javax.swing.JButton();
+        txtPesquisarEnunciado = new javax.swing.JTextField();
+        comboDificuldade = new javax.swing.JComboBox<>();
+        comboMateria = new javax.swing.JComboBox<>();
+        comboSerie = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -59,10 +210,19 @@ public class TelaEditarPerguntas extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        tabela.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                tabelaAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
         tabelaPerguntas.setViewportView(tabela);
 
         getContentPane().add(tabelaPerguntas);
-        tabelaPerguntas.setBounds(20, 210, 670, 402);
+        tabelaPerguntas.setBounds(30, 220, 740, 410);
 
         editarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/BotaoEditar.png"))); // NOI18N
         editarButton.setText("jButton1");
@@ -74,7 +234,7 @@ public class TelaEditarPerguntas extends javax.swing.JFrame {
             }
         });
         getContentPane().add(editarButton);
-        editarButton.setBounds(790, 360, 170, 60);
+        editarButton.setBounds(820, 310, 170, 70);
 
         excluirButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/BotaoExcluirVermelho.png"))); // NOI18N
         excluirButton.setText("jButton2");
@@ -86,7 +246,7 @@ public class TelaEditarPerguntas extends javax.swing.JFrame {
             }
         });
         getContentPane().add(excluirButton);
-        excluirButton.setBounds(790, 470, 170, 70);
+        excluirButton.setBounds(820, 460, 170, 70);
 
         voltarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/BotaoVoltarPequeno.png"))); // NOI18N
         voltarButton.setText("jButton1");
@@ -99,6 +259,17 @@ public class TelaEditarPerguntas extends javax.swing.JFrame {
         });
         getContentPane().add(voltarButton);
         voltarButton.setBounds(30, 630, 100, 47);
+        getContentPane().add(txtPesquisarEnunciado);
+        txtPesquisarEnunciado.setBounds(60, 170, 370, 40);
+
+        getContentPane().add(comboDificuldade);
+        comboDificuldade.setBounds(560, 180, 90, 30);
+
+        getContentPane().add(comboMateria);
+        comboMateria.setBounds(670, 180, 90, 30);
+
+        getContentPane().add(comboSerie);
+        comboSerie.setBounds(450, 180, 90, 30);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/TelaEditarUsuario.png"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -138,6 +309,10 @@ public class TelaEditarPerguntas extends javax.swing.JFrame {
         voltar.setVisible(true);
         dispose();
     }//GEN-LAST:event_voltarButtonActionPerformed
+
+    private void tabelaAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tabelaAncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tabelaAncestorAdded
  public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -154,11 +329,15 @@ public class TelaEditarPerguntas extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> comboDificuldade;
+    private javax.swing.JComboBox<String> comboMateria;
+    private javax.swing.JComboBox<String> comboSerie;
     private javax.swing.JButton editarButton;
     private javax.swing.JButton excluirButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTable tabela;
     private javax.swing.JScrollPane tabelaPerguntas;
+    private javax.swing.JTextField txtPesquisarEnunciado;
     private javax.swing.JButton voltarButton;
     // End of variables declaration//GEN-END:variables
 }

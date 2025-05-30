@@ -65,49 +65,24 @@ public class PerguntaDAO {
         }
         
         public List<String[]> listarPerguntasSimples() throws Exception {
-        var lista = new ArrayList<String[]>();
-
-        var sql = """
-        SELECT 
-            p.enunciado,
-            s.nome_serie,
-            p.dificuldade,
-            m.nome_materia
-        FROM 
-            tb_pergunta p
-        JOIN 
-            tb_serie s ON p.id_serie = s.id_serie
-        JOIN 
-            tb_materia m ON p.id_materia = m.id_materia
-    """;
-
-        var fabricaDeConexoes = new ConnectionFactory();
-        var conexao = fabricaDeConexoes.obterConexao();
-
-        var ps = conexao.prepareStatement(sql);
+        List<String[]> lista = new ArrayList<>();
+        var conexao = new ConnectionFactory().obterConexao();
+        var ps = conexao.prepareStatement(
+                "SELECT p.id_pergunta, p.enunciado, s.nome_serie, d.dificuldade, m.nome_materia "
+                + "FROM tb_pergunta p "
+                + "JOIN tb_serie s ON p.id_serie = s.id_serie "
+                + "JOIN tb_nivel_dificuldade d ON p.dificuldade = d.id_nivel "
+                + "JOIN tb_materia m ON p.id_materia = m.id_materia"
+        );
         var rs = ps.executeQuery();
 
         while (rs.next()) {
-            String[] linha = new String[4];
+            String[] linha = new String[5];
             linha[0] = rs.getString("enunciado");
             linha[1] = rs.getString("nome_serie");
-
-            // Conversão de dificuldade (1, 2, 3) para texto
-            int nivel = rs.getInt("dificuldade");
-            String dificuldadeTexto;
-            switch (nivel) {
-                case 1 ->
-                    dificuldadeTexto = "Fácil";
-                case 2 ->
-                    dificuldadeTexto = "Médio";
-                case 3 ->
-                    dificuldadeTexto = "Difícil";
-                default ->
-                    dificuldadeTexto = "Desconhecido";
-            }
-
-            linha[2] = dificuldadeTexto;
+            linha[2] = rs.getString("dificuldade");
             linha[3] = rs.getString("nome_materia");
+            linha[4] = String.valueOf(rs.getInt("id_pergunta"));
 
             lista.add(linha);
         }
@@ -117,13 +92,7 @@ public class PerguntaDAO {
         conexao.close();
 
         return lista;
-    }
-        
-        
-
-
-
-
-    }
+        }
+        }
 
 

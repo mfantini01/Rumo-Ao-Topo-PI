@@ -16,7 +16,10 @@ public class Pergunta {
         private int idSerie;
         private int nivelDificuldade;
         private String dica;
-        private List<PerguntaResposta> respostas;    
+        private List<PerguntaResposta> respostas; 
+        
+        private String nomeMateria;
+        private String nomeSerie;
         
         public Pergunta(String texto){
             this.enunciado = texto;

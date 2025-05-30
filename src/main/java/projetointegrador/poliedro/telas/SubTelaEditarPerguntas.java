@@ -62,19 +62,19 @@ public class SubTelaEditarPerguntas extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTextArea1);
 
         eAlternativaA.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        eAlternativaA.setText("Edite a alternativa A:");
+        eAlternativaA.setText("Edite a alternativa 1:");
 
         eAlternativaB.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        eAlternativaB.setText("Edite a alternativa B:");
+        eAlternativaB.setText("Edite a alternativa 2:");
 
         eAlternativaC.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        eAlternativaC.setText("Edite a alternativa C:");
+        eAlternativaC.setText("Edite a alternativa 3:");
 
         eAlternativaD.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        eAlternativaD.setText("Edite a alternativa D:");
+        eAlternativaD.setText("Edite a alternativa 4:");
 
         eAlternativaE.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        eAlternativaE.setText("Edite a alternativa E:");
+        eAlternativaE.setText("Edite a alternativa 5:");
 
         eDica.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         eDica.setText("Edite a dica:");
@@ -82,7 +82,7 @@ public class SubTelaEditarPerguntas extends javax.swing.JFrame {
         eAlternativaCerta.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         eAlternativaCerta.setText("Edite alternativa certa:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A", "B", "C", "D", "E" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
 
         eDificuldade.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         eDificuldade.setText("Edite a dificuldade:");
@@ -92,7 +92,7 @@ public class SubTelaEditarPerguntas extends javax.swing.JFrame {
         eMateria.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         eMateria.setText("Edite a matéria:");
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Matemática", "Português", "Geometria", "Química", "Física", "Biologia", "História", "Geografia", "Todos" }));
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Matemática", "Português", "Geometria", "Química", "Física", "Biologia", "História", "Geografia" }));
 
         confirmarEdicaoButton.setText("Confirmar edição");
         confirmarEdicaoButton.addActionListener(new java.awt.event.ActionListener() {

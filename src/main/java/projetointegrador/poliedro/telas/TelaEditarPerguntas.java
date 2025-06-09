@@ -6,16 +6,19 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
-import projetointegrador.poliedro.modelo.Pergunta;
 import projetointegrador.poliedro.persistencia.ConnectionFactory;
 import projetointegrador.poliedro.persistencia.PerguntaDAO;
 
 public class TelaEditarPerguntas extends javax.swing.JFrame {
     public TelaEditarPerguntas() {
+        super("Rumo ao topo - Poliedro"); //Configura o título da tela 
         initComponents();  // Primeiro inicializa os componentes
         setLocationRelativeTo(null);  // Centraliza a janela
         ajustarTamanhoColunas();  // Ajusta o tamanho das colunas
         carregarPerguntasNaTabela();
+        this.setResizable(false);
+        this.setMaximizedBounds(this.getBounds());
+        setLocationRelativeTo(null); //centraliza a tela quando ela aparece
         preencherCombos();
         tabelaPergunta.getColumnModel().getColumn(4).setMinWidth(0);
         tabelaPergunta.getColumnModel().getColumn(4).setMaxWidth(0);
@@ -40,7 +43,7 @@ public class TelaEditarPerguntas extends javax.swing.JFrame {
         comboSerie.addActionListener(e -> atualizarTabelaComFiltros());
         comboDificuldade.addActionListener(e -> atualizarTabelaComFiltros());
 
-        // ✅ Carrega as perguntas com tratamento de erro
+        
         try {
             PerguntaDAO dao = new PerguntaDAO();
             listaPerguntasCache = dao.listarPerguntasSimples(); // Carrega tudo uma vez só
@@ -131,11 +134,6 @@ public class TelaEditarPerguntas extends javax.swing.JFrame {
         }
     }
 
-
-
-
-
-
     private void ajustarTamanhoColunas() {
         TableColumnModel colunaModel = tabelaPergunta.getColumnModel();
 
@@ -143,6 +141,9 @@ public class TelaEditarPerguntas extends javax.swing.JFrame {
         colunaModel.getColumn(1).setPreferredWidth(80);  // Série
         colunaModel.getColumn(2).setPreferredWidth(100); // Nível de dificuldade
         colunaModel.getColumn(3).setPreferredWidth(100); // Resposta correta
+        colunaModel.getColumn(4).setMinWidth(0);         // ID (coluna oculta)
+        colunaModel.getColumn(4).setMaxWidth(0);
+        colunaModel.getColumn(4).setWidth(0);
     }
     
     private void carregarPerguntasNaTabela() {
@@ -151,7 +152,7 @@ public class TelaEditarPerguntas extends javax.swing.JFrame {
             List<String[]> perguntas = dao.listarPerguntasSimples();
 
             // Cria um novo modelo para a tabela
-            String[] colunas = {"Enunciado", "Série", "Dificuldade", "Matéria"};
+            String[] colunas = {"Enunciado", "Série", "Dificuldade", "Matéria", "ID"};
             DefaultTableModel modelo = new DefaultTableModel(colunas, 0);
 
             // Adiciona cada pergunta à tabela
@@ -166,19 +167,10 @@ public class TelaEditarPerguntas extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-
-
-
-
-   
-    
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        tabelaPerguntas = new javax.swing.JScrollPane();
-        tabelaPergunta = new javax.swing.JTable();
         editarButton = new javax.swing.JButton();
         excluirButton = new javax.swing.JButton();
         voltarButton = new javax.swing.JButton();
@@ -186,6 +178,8 @@ public class TelaEditarPerguntas extends javax.swing.JFrame {
         comboDificuldade = new javax.swing.JComboBox<>();
         comboMateria = new javax.swing.JComboBox<>();
         comboSerie = new javax.swing.JComboBox<>();
+        tabelaPerguntas = new javax.swing.JScrollPane();
+        tabelaPergunta = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -193,39 +187,6 @@ public class TelaEditarPerguntas extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1080, 720));
         setPreferredSize(new java.awt.Dimension(1080, 720));
         getContentPane().setLayout(null);
-
-        tabelaPergunta.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Pergunta", "Serie", "N dificuldade", "Matéria"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        tabelaPergunta.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                tabelaPerguntaAncestorAdded(evt);
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
-        tabelaPerguntas.setViewportView(tabelaPergunta);
-
-        getContentPane().add(tabelaPerguntas);
-        tabelaPerguntas.setBounds(30, 220, 740, 410);
 
         editarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/BotaoEditar.png"))); // NOI18N
         editarButton.setText("jButton1");
@@ -274,6 +235,41 @@ public class TelaEditarPerguntas extends javax.swing.JFrame {
         getContentPane().add(comboSerie);
         comboSerie.setBounds(450, 180, 90, 30);
 
+        tabelaPergunta.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Pergunta", "Serie", "N dificuldade", "Matéria", "ID"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        tabelaPergunta.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                tabelaPerguntaAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        tabelaPerguntas.setViewportView(tabelaPergunta);
+
+        getContentPane().add(tabelaPerguntas);
+        tabelaPerguntas.setBounds(30, 220, 740, 410);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/TelaEditarUsuario.png"))); // NOI18N
         jLabel1.setText("jLabel1");
         jLabel1.setMaximumSize(new java.awt.Dimension(1080, 720));
@@ -298,7 +294,7 @@ public class TelaEditarPerguntas extends javax.swing.JFrame {
             int idPergunta = Integer.parseInt(tabelaPergunta.getValueAt(linhaSelecionada, colunaID).toString());
             int resposta = JOptionPane.showConfirmDialog(
                     null,
-                    "Deseja realmente excluir o usuário?",
+                    "Deseja realmente excluir a pergunta?",
                     "Confirmação",
                     JOptionPane.YES_NO_OPTION
             );
@@ -318,7 +314,7 @@ public class TelaEditarPerguntas extends javax.swing.JFrame {
                     conexao.close();
 
                     carregarPerguntasNaTabela(); // <-- esse método precisa recarregar os dados da tabela
-                    JOptionPane.showMessageDialog(null, "Pergunta excluído com sucesso!");
+                    JOptionPane.showMessageDialog(null, "Pergunta excluída com sucesso!");
                 } catch (Exception e) {
                     e.printStackTrace();
                     JOptionPane.showMessageDialog(null, "Erro ao excluir pergunta");

@@ -21,7 +21,20 @@ import projetointegrador.poliedro.persistencia.PerguntaDAO;
  *
  * @author mathe
  */
+
 public class CadastroPerguntasTela extends javax.swing.JFrame {
+    private void limparCampos(){
+    perguntaTextArea.setText("");
+    alternativaATextArea.setText("");
+    alternativaBTextArea.setText("");
+    alternativaCTextArea.setText("");
+    alternativaDTextArea.setText("");
+    alternativaETextArea.setText("");
+    dicaTextField.setText("");
+    
+    alternativasButtonGroup.clearSelection();
+    
+}
     
     private void obterSeries() {
         try {
@@ -98,6 +111,7 @@ public class CadastroPerguntasTela extends javax.swing.JFrame {
        alternativasButtonGroup.add(alternativaCRadioButton);
        alternativasButtonGroup.add(alternativaDRadioButton);
        alternativasButtonGroup.add(alternativaERadioButton);
+       
     }
 
     /**
@@ -333,9 +347,6 @@ serieComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new Serie[] {
     voltarButton.setBounds(810, 640, 100, 40);
 
     jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/FundoTelaCadastrarPergunta.png"))); // NOI18N
-    jLabel1.setMaximumSize(new java.awt.Dimension(1080, 720));
-    jLabel1.setMinimumSize(new java.awt.Dimension(1080, 720));
-    jLabel1.setPreferredSize(new java.awt.Dimension(1080, 720));
     getContentPane().add(jLabel1);
     jLabel1.setBounds(0, 0, 1080, 720);
 
@@ -401,6 +412,13 @@ serieComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new Serie[] {
             pergunta.getRespostas().add(pr3);
             pergunta.getRespostas().add(pr4);
             pergunta.getRespostas().add(pr5);
+            
+            
+            if (!alt1EhCorreta && !alt2EhCorreta && !alt3EhCorreta && !alt4EhCorreta && !alt5EhCorreta) {
+                JOptionPane.showMessageDialog(null, "Selecione pelo menos uma alternativa como correta");
+                return;
+            }
+            
             if(enunciado.isEmpty() || alternativaA.isEmpty() || alternativaB.isEmpty() || alternativaC.isEmpty() || alternativaD.isEmpty() || alternativaE.isEmpty()){
                 JOptionPane.showMessageDialog(null, "Preencha todos os campos");
             }
@@ -413,6 +431,7 @@ serieComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new Serie[] {
             perguntadao.cadastrar(pergunta);
             
             JOptionPane.showMessageDialog(null, "Pergunta cadastrada com sucesso!!");
+            limparCampos();
         }
         catch (Exception e){
             e.printStackTrace();

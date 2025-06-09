@@ -1,52 +1,25 @@
-
 package projetointegrador.poliedro.modelo;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Ranking {
+
     private int idRanking;
     private int idUsuario;
     private String mesAno;
     private int pontuacaoTotal;
     private int posicao;
+    
+    private Usuario usuario; 
 
-    // Getters e setters
-    public int getIdRanking() {
-        return idRanking;
-    }
-
-    public void setIdRanking(int idRanking) {
-        this.idRanking = idRanking;
-    }
-
-    public int getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-
-    public String getMesAno() {
-        return mesAno;
-    }
-
-    public void setMesAno(String mesAno) {
-        this.mesAno = mesAno;
-    }
-
-    public int getPontuacaoTotal() {
-        return pontuacaoTotal;
-    }
-
-    public void setPontuacaoTotal(int pontuacaoTotal) {
-        this.pontuacaoTotal = pontuacaoTotal;
-    }
-
-    public int getPosicao() {
-        return posicao;
-    }
-
-    public void setPosicao(int posicao) {
-        this.posicao = posicao;
-    }
+    // Campos adicionais (apenas para exibição, não afetam banco de dados diretamente)
+    private String nomeUsuario;
+    private String nomeSerie;
 }

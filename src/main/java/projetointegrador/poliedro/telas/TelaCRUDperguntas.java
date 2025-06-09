@@ -31,8 +31,6 @@ public class TelaCRUDperguntas extends javax.swing.JFrame {
     private void initComponents() {
 
         adicionarPerguntasButton = new javax.swing.JButton();
-        consultarPerguntasButton = new javax.swing.JButton();
-        excluirPerguntasButton = new javax.swing.JButton();
         editarPerguntasButton = new javax.swing.JButton();
         botaoVoltarButton = new javax.swing.JButton();
         fundoCRUDperguntasLabel = new javax.swing.JLabel();
@@ -53,30 +51,18 @@ public class TelaCRUDperguntas extends javax.swing.JFrame {
             }
         });
         getContentPane().add(adicionarPerguntasButton);
-        adicionarPerguntasButton.setBounds(250, 350, 280, 70);
-
-        consultarPerguntasButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/BotaoConsultarPerguntas (1).png"))); // NOI18N
-        consultarPerguntasButton.setBorderPainted(false);
-        consultarPerguntasButton.setContentAreaFilled(false);
-        consultarPerguntasButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                consultarPerguntasButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(consultarPerguntasButton);
-        consultarPerguntasButton.setBounds(250, 450, 280, 70);
-
-        excluirPerguntasButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/BotaoExcluirPerguntas (1).png"))); // NOI18N
-        excluirPerguntasButton.setBorderPainted(false);
-        excluirPerguntasButton.setContentAreaFilled(false);
-        getContentPane().add(excluirPerguntasButton);
-        excluirPerguntasButton.setBounds(560, 450, 280, 70);
+        adicionarPerguntasButton.setBounds(250, 400, 280, 70);
 
         editarPerguntasButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/BotaoEditarPerguntas (2).png"))); // NOI18N
         editarPerguntasButton.setBorderPainted(false);
         editarPerguntasButton.setContentAreaFilled(false);
+        editarPerguntasButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editarPerguntasButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(editarPerguntasButton);
-        editarPerguntasButton.setBounds(560, 350, 280, 70);
+        editarPerguntasButton.setBounds(560, 400, 280, 70);
 
         botaoVoltarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/BotaoVoltarPequeno.png"))); // NOI18N
         botaoVoltarButton.setBorderPainted(false);
@@ -96,12 +82,10 @@ public class TelaCRUDperguntas extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void consultarPerguntasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarPerguntasButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_consultarPerguntasButtonActionPerformed
-
     private void adicionarPerguntasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarPerguntasButtonActionPerformed
-        // TODO add your handling code here:
+        var cp = new CadastroPerguntasTela();
+        cp.setVisible(true);
+        dispose();
     }//GEN-LAST:event_adicionarPerguntasButtonActionPerformed
 
     private void botaoVoltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoVoltarButtonActionPerformed
@@ -109,6 +93,12 @@ public class TelaCRUDperguntas extends javax.swing.JFrame {
         so.setVisible(true);
         dispose();
     }//GEN-LAST:event_botaoVoltarButtonActionPerformed
+
+    private void editarPerguntasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarPerguntasButtonActionPerformed
+        var ep = new TelaEditarPerguntas();
+        ep.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_editarPerguntasButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -148,9 +138,7 @@ public class TelaCRUDperguntas extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton adicionarPerguntasButton;
     private javax.swing.JButton botaoVoltarButton;
-    private javax.swing.JButton consultarPerguntasButton;
     private javax.swing.JButton editarPerguntasButton;
-    private javax.swing.JButton excluirPerguntasButton;
     private javax.swing.JLabel fundoCRUDperguntasLabel;
     // End of variables declaration//GEN-END:variables
 }

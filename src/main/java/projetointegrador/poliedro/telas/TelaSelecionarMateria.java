@@ -4,18 +4,15 @@
  */
 package projetointegrador.poliedro.telas;
 
-import javax.swing.JOptionPane;
 import projetointegrador.poliedro.modelo.ControladorTransicao;
-
 /**
  *
  * @author Lucas C Ribeiro
  */
 public class TelaSelecionarMateria extends javax.swing.JFrame {
-
-    /**
-     * Creates new form TelaSelecionarMateria
-     */
+    
+   
+    
     public TelaSelecionarMateria() {
         super("Rumo ao topo - Poliedro"); //Configura o título da tela 
         initComponents();
@@ -163,7 +160,7 @@ public class TelaSelecionarMateria extends javax.swing.JFrame {
         getContentPane().add(todasButton);
         todasButton.setBounds(710, 600, 260, 70);
 
-        voltarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/BotaoVoltarPequeno.png"))); // NOI18N
+        voltarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/BotaoSairPequeno.png"))); // NOI18N
         voltarButton.setText("jButton1");
         voltarButton.setBorderPainted(false);
         voltarButton.setContentAreaFilled(false);
@@ -187,14 +184,18 @@ public class TelaSelecionarMateria extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void geometriaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_geometriaButtonActionPerformed
+        //pontuacaoFinalTela.setMateriaSelecionada("Geometria");
         ControladorTransicao controlador = new ControladorTransicao();
         controlador.iniciarPartida();
-
+        
+        
         // Fecha a tela atual de seleção, se quiser
         this.dispose();
+       
     }//GEN-LAST:event_geometriaButtonActionPerformed
 
     private void matematicaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matematicaButtonActionPerformed
+        //pontuacaoFinalTela.setMateriaSelecionada("Matemática");
         ControladorTransicao controlador = new ControladorTransicao();
         controlador.iniciarPartida();
 
@@ -203,6 +204,7 @@ public class TelaSelecionarMateria extends javax.swing.JFrame {
     }//GEN-LAST:event_matematicaButtonActionPerformed
 
     private void portuguesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_portuguesButtonActionPerformed
+        //pontuacaoFinalTela.setMateriaSelecionada("Português");
         ControladorTransicao controlador = new ControladorTransicao();
         controlador.iniciarPartida();
 
@@ -211,6 +213,7 @@ public class TelaSelecionarMateria extends javax.swing.JFrame {
     }//GEN-LAST:event_portuguesButtonActionPerformed
 
     private void quimicaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quimicaButtonActionPerformed
+        //pontuacaoFinalTela.setMateriaSelecionada("Química");
         ControladorTransicao controlador = new ControladorTransicao();
         controlador.iniciarPartida();
 
@@ -219,6 +222,7 @@ public class TelaSelecionarMateria extends javax.swing.JFrame {
     }//GEN-LAST:event_quimicaButtonActionPerformed
 
     private void fisicaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fisicaButtonActionPerformed
+        //pontuacaoFinalTela.setMateriaSelecionada("Física");
         ControladorTransicao controlador = new ControladorTransicao();
         controlador.iniciarPartida();
 
@@ -227,6 +231,7 @@ public class TelaSelecionarMateria extends javax.swing.JFrame {
     }//GEN-LAST:event_fisicaButtonActionPerformed
 
     private void biologiaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_biologiaButtonActionPerformed
+        //pontuacaoFinalTela.setMateriaSelecionada("Biologia");
         ControladorTransicao controlador = new ControladorTransicao();
         controlador.iniciarPartida();
 
@@ -235,6 +240,7 @@ public class TelaSelecionarMateria extends javax.swing.JFrame {
     }//GEN-LAST:event_biologiaButtonActionPerformed
 
     private void historiaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historiaButtonActionPerformed
+        //pontuacaoFinalTela.setMateriaSelecionada("História");
         ControladorTransicao controlador = new ControladorTransicao();
         controlador.iniciarPartida();
 
@@ -243,6 +249,7 @@ public class TelaSelecionarMateria extends javax.swing.JFrame {
     }//GEN-LAST:event_historiaButtonActionPerformed
 
     private void geografiaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_geografiaButtonActionPerformed
+        //pontuacaoFinalTela.setMateriaSelecionada("Geografia");
         ControladorTransicao controlador = new ControladorTransicao();
         controlador.iniciarPartida();
 
@@ -251,6 +258,7 @@ public class TelaSelecionarMateria extends javax.swing.JFrame {
     }//GEN-LAST:event_geografiaButtonActionPerformed
 
     private void todasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_todasButtonActionPerformed
+        //pontuacaoFinalTela.setMateriaSelecionada("Todas");
         ControladorTransicao controlador = new ControladorTransicao();
         controlador.iniciarPartida();
 
@@ -259,9 +267,7 @@ public class TelaSelecionarMateria extends javax.swing.JFrame {
     }//GEN-LAST:event_todasButtonActionPerformed
 
     private void voltarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarButtonActionPerformed
-       TelaSelecionarSerie serie = new TelaSelecionarSerie();
-                    serie.setVisible(true); 
-                    this.dispose();
+       dispose();
     }//GEN-LAST:event_voltarButtonActionPerformed
 
     /**

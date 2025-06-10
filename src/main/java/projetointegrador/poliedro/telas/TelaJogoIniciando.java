@@ -1,13 +1,60 @@
 
 package projetointegrador.poliedro.telas;
 
+import projetointegrador.poliedro.telas.TelaJogoIniciando;
+import projetointegrador.poliedro.telas.TelaPartida;
+
+import javax.swing.Timer;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class TelaJogoIniciando extends javax.swing.JFrame {
-
     
     public TelaJogoIniciando() {
+        super("Rumo ao topo - Poliedro"); //Configura o título da tela 
         initComponents();
+        this.setResizable(false); 
+        this.setMaximizedBounds(this.getBounds()); 
+        setLocationRelativeTo(null); 
+        
+        
     }
+
+    public class ControladorTransicao {
+
+        private TelaJogoIniciando telaJogoIniciando;
+        private TelaPartida telaPartida;
+
+        public void iniciarPartida() {
+            // Cria e exibe a tela "JOGO INICIANDO..."
+            telaJogoIniciando = new TelaJogoIniciando();
+            telaJogoIniciando.setLocationRelativeTo(null);  // Centraliza a janela
+            telaJogoIniciando.setVisible(true);
+
+            // Define o tempo de espera em milissegundos (ex: 3000 ms = 3 segundos)
+            int delay = 3000;
+
+            // Cria um Timer para aguardar e depois abrir a TelaPartida
+            Timer timer = new Timer(delay, new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    // Fecha a tela "JOGO INICIANDO..."
+                    telaJogoIniciando.dispose();
+
+                    // Abre a tela da partida
+                    telaPartida = new TelaPartida();
+                    telaPartida.setVisible(true);
+                }
+            });
+
+            // Garante que o Timer execute apenas uma vez
+            timer.setRepeats(false);
+
+            // Inicia o Timer
+            timer.start();
+        }
+    }
+   
 
     
     @SuppressWarnings("unchecked")
@@ -22,7 +69,7 @@ public class TelaJogoIniciando extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1080, 720));
         getContentPane().setLayout(null);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/TelaJogoIniciando (1).png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/FundoTelaJogoIniciando.png"))); // NOI18N
         jLabel1.setText("jLabel1");
         jLabel1.setMaximumSize(new java.awt.Dimension(1080, 720));
         jLabel1.setMinimumSize(new java.awt.Dimension(1080, 720));

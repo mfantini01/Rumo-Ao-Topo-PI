@@ -47,18 +47,18 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jTextField1" max="32767" attributes="0"/>
-                              <Component id="jTextField2" max="32767" attributes="0"/>
-                              <Component id="jTextField3" max="32767" attributes="0"/>
-                              <Component id="jTextField4" max="32767" attributes="0"/>
-                              <Component id="jTextField5" max="32767" attributes="0"/>
-                              <Component id="jTextField6" max="32767" attributes="0"/>
+                              <Component id="txtAlternativa1" max="32767" attributes="0"/>
+                              <Component id="txtAlternativa2" max="32767" attributes="0"/>
+                              <Component id="txtAlternativa3" max="32767" attributes="0"/>
+                              <Component id="txtAlternativa4" max="32767" attributes="0"/>
+                              <Component id="txtAlternativa5" max="32767" attributes="0"/>
+                              <Component id="txtDica" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jComboBox3" alignment="0" pref="100" max="32767" attributes="0"/>
-                                      <Component id="jComboBox1" max="32767" attributes="0"/>
-                                      <Component id="jComboBox2" max="32767" attributes="0"/>
-                                      <Component id="jComboBox4" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="cmbMateria" alignment="0" pref="100" max="32767" attributes="0"/>
+                                      <Component id="cmbAlternativaCorreta" max="32767" attributes="0"/>
+                                      <Component id="cmbDificuldade" max="32767" attributes="0"/>
+                                      <Component id="cmbSerie" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
@@ -87,52 +87,52 @@
               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="eAlternativaA" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField1" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="txtAlternativa1" min="-2" pref="34" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="eAlternativaB" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField2" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="txtAlternativa2" min="-2" pref="34" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jTextField3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="txtAlternativa3" min="-2" pref="34" max="-2" attributes="0"/>
                   <Component id="eAlternativaC" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jTextField4" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="txtAlternativa4" min="-2" pref="34" max="-2" attributes="0"/>
                   <Component id="eAlternativaD" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jTextField5" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="txtAlternativa5" min="-2" pref="34" max="-2" attributes="0"/>
                   <Component id="eAlternativaE" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="eDica" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField6" alignment="0" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="txtDica" alignment="0" min="-2" pref="34" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="eSerie" min="-2" max="-2" attributes="0"/>
-                  <Component id="jComboBox4" min="-2" max="-2" attributes="0"/>
+                  <Component id="cmbSerie" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="eAlternativaCerta" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cmbAlternativaCorreta" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="eDificuldade" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jComboBox2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cmbDificuldade" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="eMateria" min="-2" max="-2" attributes="0"/>
-                  <Component id="jComboBox3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cmbMateria" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="11" max="32767" attributes="0"/>
               <Component id="confirmarEdicaoButton" min="-2" pref="43" max="-2" attributes="0"/>
@@ -157,7 +157,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextArea" name="jTextArea1">
+        <Component class="javax.swing.JTextArea" name="txtPergunta">
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
@@ -173,7 +173,7 @@
         <Property name="text" type="java.lang.String" value="Edite a alternativa 1:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField1">
+    <Component class="javax.swing.JTextField" name="txtAlternativa1">
     </Component>
     <Component class="javax.swing.JLabel" name="eAlternativaB">
       <Properties>
@@ -183,7 +183,7 @@
         <Property name="text" type="java.lang.String" value="Edite a alternativa 2:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField2">
+    <Component class="javax.swing.JTextField" name="txtAlternativa2">
     </Component>
     <Component class="javax.swing.JLabel" name="eAlternativaC">
       <Properties>
@@ -193,7 +193,7 @@
         <Property name="text" type="java.lang.String" value="Edite a alternativa 3:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField3">
+    <Component class="javax.swing.JTextField" name="txtAlternativa3">
     </Component>
     <Component class="javax.swing.JLabel" name="eAlternativaD">
       <Properties>
@@ -203,9 +203,9 @@
         <Property name="text" type="java.lang.String" value="Edite a alternativa 4:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField4">
+    <Component class="javax.swing.JTextField" name="txtAlternativa4">
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField5">
+    <Component class="javax.swing.JTextField" name="txtAlternativa5">
     </Component>
     <Component class="javax.swing.JLabel" name="eAlternativaE">
       <Properties>
@@ -223,7 +223,7 @@
         <Property name="text" type="java.lang.String" value="Edite a dica:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField6">
+    <Component class="javax.swing.JTextField" name="txtDica">
     </Component>
     <Component class="javax.swing.JLabel" name="eAlternativaCerta">
       <Properties>
@@ -233,7 +233,7 @@
         <Property name="text" type="java.lang.String" value="Edite alternativa certa:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBox1">
+    <Component class="javax.swing.JComboBox" name="cmbAlternativaCorreta">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="5">
@@ -257,7 +257,7 @@
         <Property name="text" type="java.lang.String" value="Edite a dificuldade:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBox2">
+    <Component class="javax.swing.JComboBox" name="cmbDificuldade">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="3">
@@ -279,21 +279,24 @@
         <Property name="text" type="java.lang.String" value="Edite a mat&#xe9;ria:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBox3">
+    <Component class="javax.swing.JComboBox" name="cmbMateria">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="8">
             <StringItem index="0" value="Matem&#xe1;tica"/>
             <StringItem index="1" value="Portugu&#xea;s"/>
-            <StringItem index="2" value="Geometria"/>
-            <StringItem index="3" value="Qu&#xed;mica"/>
+            <StringItem index="2" value="Geografia"/>
+            <StringItem index="3" value="Hist&#xf3;ria"/>
             <StringItem index="4" value="F&#xed;sica"/>
-            <StringItem index="5" value="Biologia"/>
-            <StringItem index="6" value="Hist&#xf3;ria"/>
-            <StringItem index="7" value="Geografia"/>
+            <StringItem index="5" value="Qu&#xed;mica"/>
+            <StringItem index="6" value="Geometria"/>
+            <StringItem index="7" value="Biologia"/>
           </StringArray>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbMateriaActionPerformed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
@@ -314,7 +317,7 @@
         <Property name="text" type="java.lang.String" value="Edite a ser&#xed;e:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBox4">
+    <Component class="javax.swing.JComboBox" name="cmbSerie">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="3">

@@ -66,33 +66,31 @@ public class PerguntaDAO {
         
         public List<String[]> listarPerguntasSimples() throws Exception {
         List<String[]> lista = new ArrayList<>();
-        var conexao = new ConnectionFactory().obterConexao();
-        var ps = conexao.prepareStatement(
-                "SELECT p.id_pergunta, p.enunciado, s.nome_serie, d.dificuldade, m.nome_materia "
-                + "FROM tb_pergunta p "
-                + "JOIN tb_serie s ON p.id_serie = s.id_serie "
-                + "JOIN tb_nivel_dificuldade d ON p.dificuldade = d.id_nivel "
-                + "JOIN tb_materia m ON p.id_materia = m.id_materia"
-        );
-        var rs = ps.executeQuery();
 
-        while (rs.next()) {
-            String[] linha = new String[5];
-            linha[0] = rs.getString("enunciado");
-            linha[1] = rs.getString("nome_serie");
-            linha[2] = rs.getString("dificuldade");
-            linha[3] = rs.getString("nome_materia");
-            linha[4] = String.valueOf(rs.getInt("id_pergunta"));
+        String sql = """
+        SELECT p.id_pergunta, p.enunciado, s.nome_serie, d.dificuldade, m.nome_materia
+        FROM tb_pergunta p
+        JOIN tb_serie s ON p.id_serie = s.id_serie
+        JOIN tb_nivel_dificuldade d ON p.dificuldade = d.id_nivel
+        JOIN tb_materia m ON p.id_materia = m.id_materia
+    """;
 
-            lista.add(linha);
+        try (var conexao = new ConnectionFactory().obterConexao(); var ps = conexao.prepareStatement(sql); var rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                String[] linha = new String[5];
+                linha[0] = rs.getString("enunciado");
+                linha[1] = rs.getString("nome_serie");
+                linha[2] = rs.getString("dificuldade");
+                linha[3] = rs.getString("nome_materia");
+                linha[4] = String.valueOf(rs.getInt("id_pergunta"));
+
+                lista.add(linha);
+            }
         }
-
-        rs.close();
-        ps.close();
-        conexao.close();
 
         return lista;
-        }
+    }
         }
 
 

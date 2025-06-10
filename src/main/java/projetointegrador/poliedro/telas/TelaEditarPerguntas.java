@@ -4,6 +4,7 @@ package projetointegrador.poliedro.telas;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 import projetointegrador.poliedro.persistencia.ConnectionFactory;
@@ -282,9 +283,20 @@ public class TelaEditarPerguntas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void editarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarButtonActionPerformed
-        var editar = new SubTelaEditarPerguntas();
-        editar.setVisible(true);
-        dispose();
+        JTable tabela = (JTable) tabelaPerguntas.getViewport().getView();
+        int selectedRow = tabela.getSelectedRow();
+        if (selectedRow != -1) {
+            try {
+                int idPergunta = Integer.parseInt((String) tabela.getValueAt(selectedRow, 4)); // ID está na coluna 4
+                SubTelaEditarPerguntas subTela = new SubTelaEditarPerguntas(idPergunta);
+                subTela.setVisible(true);
+            } catch (Exception e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Erro ao abrir tela de edição.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Selecione uma pergunta para editar.");
+        }
     }//GEN-LAST:event_editarButtonActionPerformed
 
     private void excluirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirButtonActionPerformed

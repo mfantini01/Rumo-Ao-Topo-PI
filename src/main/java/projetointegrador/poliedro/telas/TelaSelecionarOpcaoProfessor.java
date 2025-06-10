@@ -114,7 +114,9 @@ public class TelaSelecionarOpcaoProfessor extends javax.swing.JFrame {
     }//GEN-LAST:event_usuariosButtonActionPerformed
 
     private void rankingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rankingButtonActionPerformed
-        JOptionPane.showMessageDialog(null, "Bem vindo!");
+        var r = new TelaRanking();
+        r.setVisible(true);
+        dispose();
     }//GEN-LAST:event_rankingButtonActionPerformed
 
     private void sairButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairButtonActionPerformed

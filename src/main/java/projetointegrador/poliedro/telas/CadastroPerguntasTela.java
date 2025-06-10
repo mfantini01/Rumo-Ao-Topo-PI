@@ -160,7 +160,7 @@ public class CadastroPerguntasTela extends javax.swing.JFrame {
 
         perguntaTextArea.setBackground(new Color(0, 0, 0, 0));
         perguntaTextArea.setColumns(20);
-        perguntaTextArea.setFont(new java.awt.Font("Segoe UI Semibold", 1, 36)); // NOI18N
+        perguntaTextArea.setFont(new java.awt.Font("Segoe UI Semibold", 1, 28)); // NOI18N
         perguntaTextArea.setForeground(Color.WHITE);
         perguntaTextArea.setLineWrap(true);
         perguntaTextArea.setRows(5);
@@ -188,7 +188,7 @@ public class CadastroPerguntasTela extends javax.swing.JFrame {
 
         alternativaATextArea.setBackground(new Color(0, 0, 0, 0));
         alternativaATextArea.setColumns(20);
-        alternativaATextArea.setFont(new java.awt.Font("Segoe UI Semibold", 1, 36)); // NOI18N
+        alternativaATextArea.setFont(new java.awt.Font("Segoe UI Semibold", 1, 25)); // NOI18N
         alternativaATextArea.setForeground(Color.WHITE);
         alternativaATextArea.setLineWrap(true);
         alternativaATextArea.setRows(5);
@@ -200,7 +200,7 @@ public class CadastroPerguntasTela extends javax.swing.JFrame {
         alternativaAScrollPane.setViewportView(alternativaATextArea);
 
         getContentPane().add(alternativaAScrollPane);
-        alternativaAScrollPane.setBounds(210, 200, 310, 50);
+        alternativaAScrollPane.setBounds(210, 200, 310, 60);
 
         alternativaBScrollPane.setViewportBorder(null
         );
@@ -208,7 +208,7 @@ public class CadastroPerguntasTela extends javax.swing.JFrame {
 
         alternativaBTextArea.setBackground(new Color(0, 0, 0, 0));
         alternativaBTextArea.setColumns(20);
-        alternativaBTextArea.setFont(new java.awt.Font("Segoe UI Semibold", 1, 36)); // NOI18N
+        alternativaBTextArea.setFont(new java.awt.Font("Segoe UI Semibold", 1, 25)); // NOI18N
         alternativaBTextArea.setForeground(Color.WHITE);
         alternativaBTextArea.setLineWrap(true);
         alternativaBTextArea.setRows(5);
@@ -220,7 +220,7 @@ public class CadastroPerguntasTela extends javax.swing.JFrame {
         alternativaBScrollPane.setViewportView(alternativaBTextArea);
 
         getContentPane().add(alternativaBScrollPane);
-        alternativaBScrollPane.setBounds(210, 290, 310, 50);
+        alternativaBScrollPane.setBounds(210, 290, 310, 70);
 
         alternativaCScrollPane.setViewportBorder(null
         );
@@ -228,7 +228,7 @@ public class CadastroPerguntasTela extends javax.swing.JFrame {
 
         alternativaCTextArea.setBackground(new Color(0, 0, 0, 0));
         alternativaCTextArea.setColumns(20);
-        alternativaCTextArea.setFont(new java.awt.Font("Segoe UI Semibold", 1, 36)); // NOI18N
+        alternativaCTextArea.setFont(new java.awt.Font("Segoe UI Semibold", 1, 25)); // NOI18N
         alternativaCTextArea.setForeground(Color.WHITE);
         alternativaCTextArea.setLineWrap(true);
         alternativaCTextArea.setRows(5);
@@ -238,7 +238,7 @@ public class CadastroPerguntasTela extends javax.swing.JFrame {
         alternativaCScrollPane.setViewportView(alternativaCTextArea);
 
         getContentPane().add(alternativaCScrollPane);
-        alternativaCScrollPane.setBounds(210, 390, 310, 50);
+        alternativaCScrollPane.setBounds(210, 390, 310, 60);
 
         alternativaDScrollPane.setViewportBorder(null
         );
@@ -246,7 +246,7 @@ public class CadastroPerguntasTela extends javax.swing.JFrame {
 
         alternativaDTextArea.setBackground(new Color(0, 0, 0, 0));
         alternativaDTextArea.setColumns(20);
-        alternativaDTextArea.setFont(new java.awt.Font("Segoe UI Semibold", 1, 36)); // NOI18N
+        alternativaDTextArea.setFont(new java.awt.Font("Segoe UI Semibold", 1, 25)); // NOI18N
         alternativaDTextArea.setForeground(Color.WHITE);
         alternativaDTextArea.setLineWrap(true);
         alternativaDTextArea.setRows(5);
@@ -258,7 +258,7 @@ public class CadastroPerguntasTela extends javax.swing.JFrame {
         alternativaDScrollPane.setViewportView(alternativaDTextArea);
 
         getContentPane().add(alternativaDScrollPane);
-        alternativaDScrollPane.setBounds(210, 480, 310, 50);
+        alternativaDScrollPane.setBounds(210, 490, 310, 60);
 
         alternativaEScrollPane.setViewportBorder(null
         );
@@ -266,7 +266,7 @@ public class CadastroPerguntasTela extends javax.swing.JFrame {
 
         alternativaETextArea.setBackground(new Color(0, 0, 0, 0));
         alternativaETextArea.setColumns(20);
-        alternativaETextArea.setFont(new java.awt.Font("Segoe UI Semibold", 1, 36)); // NOI18N
+        alternativaETextArea.setFont(new java.awt.Font("Segoe UI Semibold", 1, 25)); // NOI18N
         alternativaETextArea.setForeground(Color.WHITE);
         alternativaETextArea.setLineWrap(true);
         alternativaETextArea.setRows(5);

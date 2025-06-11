@@ -18,17 +18,17 @@ public class TelaJogoIniciando extends javax.swing.JFrame {
     }
 
     private void iniciarTimerTransicao() {
-        int delay = 5000; // 5 segundos
+        int delay = 5000; 
 
         Timer timer = new Timer(delay, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Fecha esta tela
+                
                 dispose();
             }
         });
 
-        timer.setRepeats(false); // Executa só uma vez
+        timer.setRepeats(false); 
         timer.start();
     }
 
@@ -60,7 +60,7 @@ public class TelaJogoIniciando extends javax.swing.JFrame {
 
 
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
+        
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {

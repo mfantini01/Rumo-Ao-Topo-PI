@@ -50,7 +50,6 @@ public class DAO {
 
         try (
                 var conexao = new ConnectionFactory().obterConexao(); var ps = conexao.prepareStatement(sql)) {
-
             ps.setString(1, user.getEmail());
             ps.setString(2, user.getSenha());
 
@@ -58,23 +57,20 @@ public class DAO {
                 if (rs.next()) {
                     int serie = rs.getInt("id_serie");
 
-                    // Traduz o número para o nome da série
+                    // Usar switch para retornar a descrição da série
                     return switch (serie) {
-                        case 1 ->
-                            "1° ano";
-                        case 2 ->
-                            "2° ano";
-                        case 3 ->
-                            "3° ano";
-                        default ->
-                            null;
-                    };
-                } else {
-                    return null;
+                        case 1 -> "1° ano";
+                        case 2 -> "2° ano";
+                        case 3 -> "3° ano";
+                        default -> null;
+                    }; // Série fora do esperado
                 }
             }
         }
+
+        return null; // Nenhum resultado encontrado
     }
+
 
     public List<Serie> obterSeries() throws Exception {
         var series = new ArrayList<Serie>();

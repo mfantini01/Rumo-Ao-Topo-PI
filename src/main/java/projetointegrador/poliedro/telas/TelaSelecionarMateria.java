@@ -185,7 +185,7 @@ public class TelaSelecionarMateria extends javax.swing.JFrame {
 
     private void geometriaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_geometriaButtonActionPerformed
         //pontuacaoFinalTela.setMateriaSelecionada("Geometria");
-        ControladorTransicao controlador = new ControladorTransicao();
+        ControladorTransicao controlador = new ControladorTransicao("Geometria");
         controlador.iniciarPartida();
         
         
@@ -196,7 +196,7 @@ public class TelaSelecionarMateria extends javax.swing.JFrame {
 
     private void matematicaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matematicaButtonActionPerformed
         //pontuacaoFinalTela.setMateriaSelecionada("Matemática");
-        ControladorTransicao controlador = new ControladorTransicao();
+        ControladorTransicao controlador = new ControladorTransicao("Matemática");
         controlador.iniciarPartida();
 
         // Fecha a tela atual de seleção, se quiser
@@ -205,7 +205,7 @@ public class TelaSelecionarMateria extends javax.swing.JFrame {
 
     private void portuguesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_portuguesButtonActionPerformed
         //pontuacaoFinalTela.setMateriaSelecionada("Português");
-        ControladorTransicao controlador = new ControladorTransicao();
+        ControladorTransicao controlador = new ControladorTransicao("Português");
         controlador.iniciarPartida();
 
         // Fecha a tela atual de seleção, se quiser
@@ -214,7 +214,7 @@ public class TelaSelecionarMateria extends javax.swing.JFrame {
 
     private void quimicaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quimicaButtonActionPerformed
         //pontuacaoFinalTela.setMateriaSelecionada("Química");
-        ControladorTransicao controlador = new ControladorTransicao();
+        ControladorTransicao controlador = new ControladorTransicao("Química");
         controlador.iniciarPartida();
 
         // Fecha a tela atual de seleção, se quiser
@@ -223,7 +223,7 @@ public class TelaSelecionarMateria extends javax.swing.JFrame {
 
     private void fisicaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fisicaButtonActionPerformed
         //pontuacaoFinalTela.setMateriaSelecionada("Física");
-        ControladorTransicao controlador = new ControladorTransicao();
+        ControladorTransicao controlador = new ControladorTransicao("Física");
         controlador.iniciarPartida();
 
         // Fecha a tela atual de seleção, se quiser
@@ -232,7 +232,7 @@ public class TelaSelecionarMateria extends javax.swing.JFrame {
 
     private void biologiaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_biologiaButtonActionPerformed
         //pontuacaoFinalTela.setMateriaSelecionada("Biologia");
-        ControladorTransicao controlador = new ControladorTransicao();
+        ControladorTransicao controlador = new ControladorTransicao("Biologia");
         controlador.iniciarPartida();
 
         // Fecha a tela atual de seleção, se quiser
@@ -241,7 +241,7 @@ public class TelaSelecionarMateria extends javax.swing.JFrame {
 
     private void historiaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historiaButtonActionPerformed
         //pontuacaoFinalTela.setMateriaSelecionada("História");
-        ControladorTransicao controlador = new ControladorTransicao();
+        ControladorTransicao controlador = new ControladorTransicao("História");
         controlador.iniciarPartida();
 
         // Fecha a tela atual de seleção, se quiser
@@ -250,7 +250,7 @@ public class TelaSelecionarMateria extends javax.swing.JFrame {
 
     private void geografiaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_geografiaButtonActionPerformed
         //pontuacaoFinalTela.setMateriaSelecionada("Geografia");
-        ControladorTransicao controlador = new ControladorTransicao();
+        ControladorTransicao controlador = new ControladorTransicao("Geografia");
         controlador.iniciarPartida();
 
         // Fecha a tela atual de seleção, se quiser
@@ -259,7 +259,7 @@ public class TelaSelecionarMateria extends javax.swing.JFrame {
 
     private void todasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_todasButtonActionPerformed
         //pontuacaoFinalTela.setMateriaSelecionada("Todas");
-        ControladorTransicao controlador = new ControladorTransicao();
+        ControladorTransicao controlador = new ControladorTransicao("Todas");
         controlador.iniciarPartida();
 
         // Fecha a tela atual de seleção, se quiser

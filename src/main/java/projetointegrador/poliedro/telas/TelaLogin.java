@@ -124,7 +124,7 @@ public class TelaLogin extends javax.swing.JFrame {
                     String serieTexto = dao.obterSerie(user);
 
                     if (serieTexto == null) {
-                        JOptionPane.showMessageDialog(this, "Série não cadastrada para o usuário.")
+                        JOptionPane.showMessageDialog(this, "Série não cadastrada para o usuário.");
                     }
 
                     int serie = 0;

@@ -1,4 +1,3 @@
-
 package projetointegrador.poliedro.telas;
 
 import java.awt.Color;
@@ -6,17 +5,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
-import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import projetointegrador.poliedro.modelo.Pergunta;
 import projetointegrador.poliedro.modelo.PerguntaResposta;
 import projetointegrador.poliedro.modelo.Usuario;
 import projetointegrador.poliedro.persistencia.PerguntaDAO;
-
 
 public class TelaPartida extends javax.swing.JFrame {
 
@@ -26,21 +22,22 @@ public class TelaPartida extends javax.swing.JFrame {
     private boolean usouMeioMeio = false;
     private boolean usouDicaProfessor = false;
     private boolean usouPular = false;
+    public TelaPartida() {
 
-    
-    
-    public TelaPartida(){
-    
     }
+
     public TelaPartida(Usuario usuario, int idMateriaSelecionada) {
-        this.usuario = usuario ; 
-        this.idMateriaSelecionada = idMateriaSelecionada ; 
+        this.usuario = usuario;
+        this.idMateriaSelecionada = idMateriaSelecionada;
         initComponents();
         carregarPerguntaAleatoria();
         setLocationRelativeTo(null);  // Centraliza a janela
         this.setResizable(false);
         this.setMaximizedBounds(this.getBounds());
         setLocationRelativeTo(null); //centraliza a tela quando ela aparece
+        meioMeioCinzajLabel.setVisible(false);
+        dicaProfessorCinzajLabel.setVisible(false);
+        pularQuestaoCinzajLabel.setVisible(false);
         enunciadojScrollPane1.getViewport().setOpaque(false);
         enunciadojScrollPane1.setBorder(null);
         enunciadojScrollPane1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
@@ -75,14 +72,10 @@ public class TelaPartida extends javax.swing.JFrame {
             botao.setContentAreaFilled(false);
             botao.setBorderPainted(false);
         }
-        meioMeioCinzajLabel.setVisible(false);
-        dicaProfessorCinzajLabel.setVisible(false);
-        pularQuestaoCinzajLabel.setVisible(false);
     }
-  
+
     private void carregarPerguntaAleatoria() {
         try {
-
             var perguntaDAO = new PerguntaDAO();
             var serieUsuario = usuario.getSerie();
             Pergunta pergunta = perguntaDAO.buscarPerguntaAleatoriaPorSerieEMateria(serieUsuario, idMateriaSelecionada);
@@ -99,36 +92,6 @@ public class TelaPartida extends javax.swing.JFrame {
             }
             perguntaAtual = pergunta; // Importante: guardar a pergunta atual para verificação depois
 
-            perguntaAtual = perguntaDAO.buscarPerguntaAleatoria();
-        } catch (Exception e) {
-            e.printStackTrace();
-            enunciado.setText("Erro ao buscar pergunta no banco de dados.");
-            alternativa1jTextArea1.setText("");
-            alternativa2jTextArea2.setText("");
-            alternativa3jTextArea3.setText("");
-            alternativa4jTextArea4.setText("");
-            alternativa5jTextArea5.setText("");
-            return;
-        }
-        
-        
-        alternativa1jButton1.setEnabled(true);
-        alternativa2jButton1.setEnabled(true);
-        alternativa3jButton1.setEnabled(true);
-        alternativa4jButton1.setEnabled(true);
-        alternativa5jButton1.setEnabled(true);
-        
-        alternativa1jButton1.setVisible(true);
-        alternativa2jButton1.setVisible(true);
-        alternativa3jButton1.setVisible(true);
-        alternativa4jButton1.setVisible(true);
-        alternativa5jButton1.setVisible(true);
-        
-        alternativa1jTextArea1.setVisible(true);
-        alternativa2jTextArea2.setVisible(true);
-        alternativa3jTextArea3.setVisible(true);
-        alternativa4jTextArea4.setVisible(true);
-        alternativa5jTextArea5.setVisible(true);
 // Define o enunciado
             enunciado.setText(pergunta.getEnunciado());
 
@@ -147,13 +110,32 @@ public class TelaPartida extends javax.swing.JFrame {
             if (respostas.size() > 3) {
                 alternativa4jTextArea4.setText(respostas.get(3).getResposta().getTexto());
             }
-            if (respostas.size() > 4)
+            if (respostas.size() > 4) {
                 alternativa5jTextArea5.setText(respostas.get(4).getResposta().getTexto());
+            }
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Erro ao carregar pergunta: " + e.getMessage());
         }
+        alternativa1jButton1.setEnabled(true);
+        alternativa2jButton1.setEnabled(true);
+        alternativa3jButton1.setEnabled(true);
+        alternativa4jButton1.setEnabled(true);
+        alternativa5jButton1.setEnabled(true);
+
+        alternativa1jButton1.setVisible(true);
+        alternativa2jButton1.setVisible(true);
+        alternativa3jButton1.setVisible(true);
+        alternativa4jButton1.setVisible(true);
+        alternativa5jButton1.setVisible(true);
+
+        alternativa1jTextArea1.setVisible(true);
+        alternativa2jTextArea2.setVisible(true);
+        alternativa3jTextArea3.setVisible(true);
+        alternativa4jTextArea4.setVisible(true);
+        alternativa5jTextArea5.setVisible(true);
     }
+
     private void verificarResposta(int indice) {
         if (perguntaAtual == null || perguntaAtual.getRespostas() == null || indice >= perguntaAtual.getRespostas().size()) {
             JOptionPane.showMessageDialog(this, "Erro ao verificar a resposta.");
@@ -186,7 +168,7 @@ public class TelaPartida extends javax.swing.JFrame {
             carregarPerguntaAleatoria();
         }
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -539,7 +521,7 @@ public class TelaPartida extends javax.swing.JFrame {
         }
         usouPular = true;
        
-        carregarPergunta();
+        carregarPerguntaAleatoria();
         
         pularQuestaoCinzajLabel.setVisible(true);
         pularQuestaojButton1.setEnabled(false);
@@ -593,3 +575,4 @@ public class TelaPartida extends javax.swing.JFrame {
     private javax.swing.JButton pularQuestaojButton1;
     // End of variables declaration//GEN-END:variables
 }
+

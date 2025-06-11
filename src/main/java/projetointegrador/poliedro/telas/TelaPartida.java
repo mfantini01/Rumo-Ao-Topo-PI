@@ -173,7 +173,7 @@ public class TelaPartida extends javax.swing.JFrame {
         enunciado.setEditable(false);
         enunciado.setBackground(new Color(0, 0, 0, 0));
         enunciado.setColumns(20);
-        enunciado.setFont(new java.awt.Font("Segoe UI Semibold", 1, 25)); // NOI18N
+        enunciado.setFont(new java.awt.Font("Segoe UI Semibold", 1, 28)); // NOI18N
         enunciado.setForeground(Color.WHITE);
         enunciado.setLineWrap(true);
         enunciado.setRows(5);
@@ -189,6 +189,7 @@ public class TelaPartida extends javax.swing.JFrame {
         alternativa1jTextArea1.setEditable(false);
         alternativa1jTextArea1.setBackground(new Color(0, 0, 0, 0));
         alternativa1jTextArea1.setColumns(20);
+        alternativa1jTextArea1.setFont(new java.awt.Font("Segoe UI Semibold", 1, 25)); // NOI18N
         alternativa1jTextArea1.setForeground(Color.WHITE);
         alternativa1jTextArea1.setRows(5);
         alternativa1jTextArea1.setBorder(null);
@@ -203,6 +204,7 @@ public class TelaPartida extends javax.swing.JFrame {
         alternativa2jTextArea2.setEditable(false);
         alternativa2jTextArea2.setBackground(new Color(0, 0, 0, 0));
         alternativa2jTextArea2.setColumns(20);
+        alternativa2jTextArea2.setFont(new java.awt.Font("Segoe UI Semibold", 1, 25)); // NOI18N
         alternativa2jTextArea2.setForeground(Color.WHITE);
         alternativa2jTextArea2.setRows(5);
         alternativa2jTextArea2.setBorder(null);
@@ -217,6 +219,7 @@ public class TelaPartida extends javax.swing.JFrame {
         alternativa3jTextArea3.setEditable(false);
         alternativa3jTextArea3.setBackground(new Color(0, 0, 0, 0));
         alternativa3jTextArea3.setColumns(20);
+        alternativa3jTextArea3.setFont(new java.awt.Font("Segoe UI Semibold", 1, 25)); // NOI18N
         alternativa3jTextArea3.setForeground(Color.WHITE);
         alternativa3jTextArea3.setRows(5);
         alternativa3jTextArea3.setBorder(null);
@@ -231,6 +234,7 @@ public class TelaPartida extends javax.swing.JFrame {
         alternativa4jTextArea4.setEditable(false);
         alternativa4jTextArea4.setBackground(new Color(0, 0, 0, 0));
         alternativa4jTextArea4.setColumns(20);
+        alternativa4jTextArea4.setFont(new java.awt.Font("Segoe UI Semibold", 1, 25)); // NOI18N
         alternativa4jTextArea4.setForeground(Color.WHITE);
         alternativa4jTextArea4.setRows(5);
         alternativa4jTextArea4.setBorder(null);
@@ -245,6 +249,7 @@ public class TelaPartida extends javax.swing.JFrame {
         alternativa5jTextArea5.setEditable(false);
         alternativa5jTextArea5.setBackground(new Color(0, 0, 0, 0));
         alternativa5jTextArea5.setColumns(20);
+        alternativa5jTextArea5.setFont(new java.awt.Font("Segoe UI Semibold", 1, 25)); // NOI18N
         alternativa5jTextArea5.setForeground(Color.WHITE);
         alternativa5jTextArea5.setRows(5);
         alternativa5jTextArea5.setBorder(null);

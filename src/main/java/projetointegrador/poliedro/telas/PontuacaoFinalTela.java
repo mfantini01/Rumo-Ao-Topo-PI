@@ -4,8 +4,6 @@
  */
 package projetointegrador.poliedro.telas;
 
-import projetointegrador.poliedro.modelo.PontuacaoUtil;
-
 /**
  *
  * @author mathe
@@ -22,21 +20,6 @@ public class PontuacaoFinalTela extends javax.swing.JFrame {
         acertosTextField.setBackground(new java.awt.Color(0, 0, 0, 0));
         dinheiroGanhoTextField.setBackground(new java.awt.Color(0, 0, 0, 0));
         materiaTextField.setBackground(new java.awt.Color(0, 0, 0, 0));
-    }
-    
-    public PontuacaoFinalTela(String materia, int totalRespondidas, int totalAcertos) {
-        this(); // chama o construtor padrão para configurar layout
-
-        materiaTextField.setText(materia);
-        questoesRespondidasTextField.setText(String.valueOf(totalRespondidas));
-        acertosTextField.setText(String.valueOf(totalAcertos));
-
-        int dinheiro = 0;
-        for (int i = 1; i <= totalAcertos; i++) {
-            dinheiro += PontuacaoUtil.getPontuacaoPorOrdem(i);
-        }
-
-        dinheiroGanhoTextField.setText(String.format("%,d", dinheiro).replace(',', '.'));
     }
 
     /**

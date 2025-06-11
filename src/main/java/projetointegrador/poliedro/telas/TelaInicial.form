@@ -40,7 +40,6 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/projetointegrador/poliedro/teste/imagem/folder/BotaoJogarArrumado.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="jButton1"/>
         <Property name="borderPainted" type="boolean" value="false"/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
       </Properties>
@@ -58,7 +57,6 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/projetointegrador/poliedro/teste/imagem/folder/BotaoSairArrumadoInicio.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="jButton1"/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
       </Properties>
       <Events>

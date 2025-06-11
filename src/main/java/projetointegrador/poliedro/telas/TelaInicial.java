@@ -46,7 +46,6 @@ public class TelaInicial extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         jogarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/BotaoJogarArrumado.png"))); // NOI18N
-        jogarButton.setText("jButton1");
         jogarButton.setBorderPainted(false);
         jogarButton.setContentAreaFilled(false);
         jogarButton.addActionListener(new java.awt.event.ActionListener() {
@@ -58,7 +57,6 @@ public class TelaInicial extends javax.swing.JFrame {
         jogarButton.setBounds(350, 380, 440, 110);
 
         sairButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/BotaoSairArrumadoInicio.png"))); // NOI18N
-        sairButton.setText("jButton1");
         sairButton.setContentAreaFilled(false);
         sairButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

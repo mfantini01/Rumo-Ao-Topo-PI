@@ -25,11 +25,6 @@ public class TelaJogoIniciando extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 // Fecha esta tela
                 dispose();
-
-                // Abre a próxima tela
-                TelaPartida telaPartida = new TelaPartida();
-                telaPartida.setLocationRelativeTo(null); // Centraliza
-                telaPartida.setVisible(true);
             }
         });
 

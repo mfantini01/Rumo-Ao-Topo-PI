@@ -64,9 +64,6 @@ public class JogarNovamenteTela extends javax.swing.JFrame {
         sairButton.setBounds(560, 370, 270, 80);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/FundoJogarNovamente.png"))); // NOI18N
-        jLabel1.setMaximumSize(new java.awt.Dimension(1080, 720));
-        jLabel1.setMinimumSize(new java.awt.Dimension(1080, 720));
-        jLabel1.setPreferredSize(new java.awt.Dimension(1080, 720));
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 1080, 720);
 
@@ -78,9 +75,9 @@ public class JogarNovamenteTela extends javax.swing.JFrame {
     }//GEN-LAST:event_sairButtonActionPerformed
 
     private void jogarNovamenteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jogarNovamenteButtonActionPerformed
-        var sm = new TelaSelecionarMateria();
-        sm.setVisible(true);
-        dispose();
+      var ti = new TelaInicial();
+      ti.setVisible(true);
+      dispose();
     }//GEN-LAST:event_jogarNovamenteButtonActionPerformed
 
     /**

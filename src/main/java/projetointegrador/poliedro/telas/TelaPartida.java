@@ -199,9 +199,7 @@ public class TelaPartida extends javax.swing.JFrame {
         alternativa5jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1080, 720));
         setMinimumSize(new java.awt.Dimension(1080, 720));
-        setPreferredSize(new java.awt.Dimension(1080, 720));
         getContentPane().setLayout(null);
 
         enunciadojScrollPane1.setOpaque(false);
@@ -213,6 +211,8 @@ public class TelaPartida extends javax.swing.JFrame {
         enunciado.setForeground(Color.WHITE);
         enunciado.setLineWrap(true);
         enunciado.setRows(5);
+        enunciado.setToolTipText("");
+        enunciado.setWrapStyleWord(true);
         enunciado.setBorder(null);
         enunciado.setOpaque(false);
         enunciadojScrollPane1.setViewportView(enunciado);
@@ -227,7 +227,9 @@ public class TelaPartida extends javax.swing.JFrame {
         alternativa1jTextArea1.setColumns(20);
         alternativa1jTextArea1.setFont(new java.awt.Font("Segoe UI Semibold", 1, 25)); // NOI18N
         alternativa1jTextArea1.setForeground(Color.WHITE);
+        alternativa1jTextArea1.setLineWrap(true);
         alternativa1jTextArea1.setRows(5);
+        alternativa1jTextArea1.setWrapStyleWord(true);
         alternativa1jTextArea1.setBorder(null);
         alternativa1jTextArea1.setOpaque(false);
         alternativa1jScrollPane1.setViewportView(alternativa1jTextArea1);
@@ -242,7 +244,9 @@ public class TelaPartida extends javax.swing.JFrame {
         alternativa2jTextArea2.setColumns(20);
         alternativa2jTextArea2.setFont(new java.awt.Font("Segoe UI Semibold", 1, 25)); // NOI18N
         alternativa2jTextArea2.setForeground(Color.WHITE);
+        alternativa2jTextArea2.setLineWrap(true);
         alternativa2jTextArea2.setRows(5);
+        alternativa2jTextArea2.setWrapStyleWord(true);
         alternativa2jTextArea2.setBorder(null);
         alternativa2jTextArea2.setOpaque(false);
         alternativa2jScrollPane2.setViewportView(alternativa2jTextArea2);
@@ -257,7 +261,9 @@ public class TelaPartida extends javax.swing.JFrame {
         alternativa3jTextArea3.setColumns(20);
         alternativa3jTextArea3.setFont(new java.awt.Font("Segoe UI Semibold", 1, 25)); // NOI18N
         alternativa3jTextArea3.setForeground(Color.WHITE);
+        alternativa3jTextArea3.setLineWrap(true);
         alternativa3jTextArea3.setRows(5);
+        alternativa3jTextArea3.setWrapStyleWord(true);
         alternativa3jTextArea3.setBorder(null);
         alternativa3jTextArea3.setOpaque(false);
         alternativa3jScrollPane3.setViewportView(alternativa3jTextArea3);
@@ -272,7 +278,9 @@ public class TelaPartida extends javax.swing.JFrame {
         alternativa4jTextArea4.setColumns(20);
         alternativa4jTextArea4.setFont(new java.awt.Font("Segoe UI Semibold", 1, 25)); // NOI18N
         alternativa4jTextArea4.setForeground(Color.WHITE);
+        alternativa4jTextArea4.setLineWrap(true);
         alternativa4jTextArea4.setRows(5);
+        alternativa4jTextArea4.setWrapStyleWord(true);
         alternativa4jTextArea4.setBorder(null);
         alternativa4jTextArea4.setOpaque(false);
         alternativa4jScrollPane4.setViewportView(alternativa4jTextArea4);
@@ -287,7 +295,9 @@ public class TelaPartida extends javax.swing.JFrame {
         alternativa5jTextArea5.setColumns(20);
         alternativa5jTextArea5.setFont(new java.awt.Font("Segoe UI Semibold", 1, 25)); // NOI18N
         alternativa5jTextArea5.setForeground(Color.WHITE);
+        alternativa5jTextArea5.setLineWrap(true);
         alternativa5jTextArea5.setRows(5);
+        alternativa5jTextArea5.setWrapStyleWord(true);
         alternativa5jTextArea5.setBorder(null);
         alternativa5jTextArea5.setOpaque(false);
         alternativa5jScrollPane5.setViewportView(alternativa5jTextArea5);

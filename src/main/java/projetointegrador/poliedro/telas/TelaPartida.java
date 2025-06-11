@@ -1,4 +1,3 @@
-
 package projetointegrador.poliedro.telas;
 
 import java.awt.Color;
@@ -6,23 +5,24 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
-import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import projetointegrador.poliedro.modelo.Pergunta;
 import projetointegrador.poliedro.modelo.PerguntaResposta;
+import projetointegrador.poliedro.modelo.Usuario;
 import projetointegrador.poliedro.persistencia.PerguntaDAO;
-
 
 public class TelaPartida extends javax.swing.JFrame {
 
+    private Usuario usuario;
+    private int idMateriaSelecionada;
     private Pergunta perguntaAtual;
     private boolean usouMeioMeio = false;
     private boolean usouDicaProfessor = false;
     private boolean usouPular = false;
+
     private int totalRespondidas = 0;
     private int totalAcertos = 0;
     private String materiaSelecionada;
@@ -33,13 +33,32 @@ public class TelaPartida extends javax.swing.JFrame {
         this.materiaSelecionada = materiaSelecionada;
     }
     
+
+
     public TelaPartida() {
+
+    }
+
+    public TelaPartida(Usuario usuario, int idMateriaSelecionada) {
+        this.usuario = usuario;
+        this.idMateriaSelecionada = idMateriaSelecionada;
         initComponents();
+
         carregarPergunta();
         setLocationRelativeTo(null);  
         this.setResizable(false);
         this.setMaximizedBounds(this.getBounds());
         setLocationRelativeTo(null); 
+
+        carregarPerguntaAleatoria();
+        setLocationRelativeTo(null);  
+        this.setResizable(false);
+        this.setMaximizedBounds(this.getBounds());
+        setLocationRelativeTo(null); 
+        meioMeioCinzajLabel.setVisible(false);
+        dicaProfessorCinzajLabel.setVisible(false);
+        pularQuestaoCinzajLabel.setVisible(false);
+
         enunciadojScrollPane1.getViewport().setOpaque(false);
         enunciadojScrollPane1.setBorder(null);
         enunciadojScrollPane1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
@@ -74,78 +93,70 @@ public class TelaPartida extends javax.swing.JFrame {
             botao.setContentAreaFilled(false);
             botao.setBorderPainted(false);
         }
-        meioMeioCinzajLabel.setVisible(false);
-        dicaProfessorCinzajLabel.setVisible(false);
-        pularQuestaoCinzajLabel.setVisible(false);
     }
-    private void carregarPergunta() {
-        PerguntaDAO perguntaDAO = new PerguntaDAO();
 
+    private void carregarPerguntaAleatoria() {
         try {
-            perguntaAtual = perguntaDAO.buscarPerguntaAleatoria();
+            var perguntaDAO = new PerguntaDAO();
+            var serieUsuario = usuario.getSerie();
+            Pergunta pergunta = perguntaDAO.buscarPerguntaAleatoriaPorSerieEMateria(serieUsuario, idMateriaSelecionada);
+
+            if (pergunta != null) {
+               
+                System.out.println("Pergunta: " + pergunta.getEnunciado());
+                pergunta.getRespostas().forEach(resp
+                        -> System.out.println("- " + resp.getResposta().getTexto())
+                );
+               
+            } else {
+                JOptionPane.showMessageDialog(this, "Não há perguntas para essa matéria e série.");
+            }
+            perguntaAtual = pergunta; // Importante: guardar a pergunta atual para verificação depois
+
+
+            enunciado.setText(pergunta.getEnunciado());
+
+
+            List<PerguntaResposta> respostas = pergunta.getRespostas();
+
+            if (respostas.size() > 0) {
+                alternativa1jTextArea1.setText(respostas.get(0).getResposta().getTexto());
+            }
+            if (respostas.size() > 1) {
+                alternativa2jTextArea2.setText(respostas.get(1).getResposta().getTexto());
+            }
+            if (respostas.size() > 2) {
+                alternativa3jTextArea3.setText(respostas.get(2).getResposta().getTexto());
+            }
+            if (respostas.size() > 3) {
+                alternativa4jTextArea4.setText(respostas.get(3).getResposta().getTexto());
+            }
+            if (respostas.size() > 4) {
+                alternativa5jTextArea5.setText(respostas.get(4).getResposta().getTexto());
+            }
         } catch (Exception e) {
             e.printStackTrace();
-            enunciado.setText("Erro ao buscar pergunta no banco de dados.");
-            alternativa1jTextArea1.setText("");
-            alternativa2jTextArea2.setText("");
-            alternativa3jTextArea3.setText("");
-            alternativa4jTextArea4.setText("");
-            alternativa5jTextArea5.setText("");
-            return;
+            JOptionPane.showMessageDialog(this, "Erro ao carregar pergunta: " + e.getMessage());
         }
-        
-        
         alternativa1jButton1.setEnabled(true);
         alternativa2jButton1.setEnabled(true);
         alternativa3jButton1.setEnabled(true);
         alternativa4jButton1.setEnabled(true);
         alternativa5jButton1.setEnabled(true);
-        
+
         alternativa1jButton1.setVisible(true);
         alternativa2jButton1.setVisible(true);
         alternativa3jButton1.setVisible(true);
         alternativa4jButton1.setVisible(true);
         alternativa5jButton1.setVisible(true);
-        
+
         alternativa1jTextArea1.setVisible(true);
         alternativa2jTextArea2.setVisible(true);
         alternativa3jTextArea3.setVisible(true);
         alternativa4jTextArea4.setVisible(true);
         alternativa5jTextArea5.setVisible(true);
-
-        
-        
-
-        if (perguntaAtual != null) {
-            enunciado.setText(perguntaAtual.getEnunciado());
-            List<PerguntaResposta> alternativas = perguntaAtual.getRespostas();
-
-            if (alternativas != null) {
-                if (alternativas.size() > 0) {
-                    alternativa1jTextArea1.setText(alternativas.get(0).getResposta().getTexto());
-                }
-                if (alternativas.size() > 1) {
-                    alternativa2jTextArea2.setText(alternativas.get(1).getResposta().getTexto());
-                }
-                if (alternativas.size() > 2) {
-                    alternativa3jTextArea3.setText(alternativas.get(2).getResposta().getTexto());
-                }
-                if (alternativas.size() > 3) {
-                    alternativa4jTextArea4.setText(alternativas.get(3).getResposta().getTexto());
-                }
-                if (alternativas.size() > 4) {
-                    alternativa5jTextArea5.setText(alternativas.get(4).getResposta().getTexto());
-                }
-            }
-        } else {
-            enunciado.setText("Nenhuma pergunta encontrada no banco de dados.");
-            alternativa1jTextArea1.setText("");
-            alternativa2jTextArea2.setText("");
-            alternativa3jTextArea3.setText("");
-            alternativa4jTextArea4.setText("");
-            alternativa5jTextArea5.setText("");
-        }
     }
+
     private void verificarResposta(int indice) {
         if (perguntaAtual == null || perguntaAtual.getRespostas() == null || indice >= perguntaAtual.getRespostas().size()) {
             JOptionPane.showMessageDialog(this, "Erro ao verificar a resposta.");
@@ -167,7 +178,7 @@ public class TelaPartida extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Resposta correta! Próxima pergunta.");
 
                 if (totalAcertos == 10) {
-                    // Jogador venceu
+                    
                     abrirTelaPontuacaoFinal();
                     return;
                 }
@@ -187,7 +198,8 @@ public class TelaPartida extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Resposta errada!");
                 }
 
-                // Jogador errou -> fim do jogo
+
+                
                 abrirTelaPontuacaoFinal();
             }
         }
@@ -199,6 +211,11 @@ public class TelaPartida extends javax.swing.JFrame {
         this.dispose(); // fecha tela atual
     }
     
+
+            carregarPerguntaAleatoria();
+        }
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -229,9 +246,7 @@ public class TelaPartida extends javax.swing.JFrame {
         alternativa5jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1080, 720));
         setMinimumSize(new java.awt.Dimension(1080, 720));
-        setPreferredSize(new java.awt.Dimension(1080, 720));
         getContentPane().setLayout(null);
 
         enunciadojScrollPane1.setOpaque(false);
@@ -243,6 +258,8 @@ public class TelaPartida extends javax.swing.JFrame {
         enunciado.setForeground(Color.WHITE);
         enunciado.setLineWrap(true);
         enunciado.setRows(5);
+        enunciado.setToolTipText("");
+        enunciado.setWrapStyleWord(true);
         enunciado.setBorder(null);
         enunciado.setOpaque(false);
         enunciadojScrollPane1.setViewportView(enunciado);
@@ -257,7 +274,9 @@ public class TelaPartida extends javax.swing.JFrame {
         alternativa1jTextArea1.setColumns(20);
         alternativa1jTextArea1.setFont(new java.awt.Font("Segoe UI Semibold", 1, 25)); // NOI18N
         alternativa1jTextArea1.setForeground(Color.WHITE);
+        alternativa1jTextArea1.setLineWrap(true);
         alternativa1jTextArea1.setRows(5);
+        alternativa1jTextArea1.setWrapStyleWord(true);
         alternativa1jTextArea1.setBorder(null);
         alternativa1jTextArea1.setOpaque(false);
         alternativa1jScrollPane1.setViewportView(alternativa1jTextArea1);
@@ -272,7 +291,9 @@ public class TelaPartida extends javax.swing.JFrame {
         alternativa2jTextArea2.setColumns(20);
         alternativa2jTextArea2.setFont(new java.awt.Font("Segoe UI Semibold", 1, 25)); // NOI18N
         alternativa2jTextArea2.setForeground(Color.WHITE);
+        alternativa2jTextArea2.setLineWrap(true);
         alternativa2jTextArea2.setRows(5);
+        alternativa2jTextArea2.setWrapStyleWord(true);
         alternativa2jTextArea2.setBorder(null);
         alternativa2jTextArea2.setOpaque(false);
         alternativa2jScrollPane2.setViewportView(alternativa2jTextArea2);
@@ -287,7 +308,9 @@ public class TelaPartida extends javax.swing.JFrame {
         alternativa3jTextArea3.setColumns(20);
         alternativa3jTextArea3.setFont(new java.awt.Font("Segoe UI Semibold", 1, 25)); // NOI18N
         alternativa3jTextArea3.setForeground(Color.WHITE);
+        alternativa3jTextArea3.setLineWrap(true);
         alternativa3jTextArea3.setRows(5);
+        alternativa3jTextArea3.setWrapStyleWord(true);
         alternativa3jTextArea3.setBorder(null);
         alternativa3jTextArea3.setOpaque(false);
         alternativa3jScrollPane3.setViewportView(alternativa3jTextArea3);
@@ -302,7 +325,9 @@ public class TelaPartida extends javax.swing.JFrame {
         alternativa4jTextArea4.setColumns(20);
         alternativa4jTextArea4.setFont(new java.awt.Font("Segoe UI Semibold", 1, 25)); // NOI18N
         alternativa4jTextArea4.setForeground(Color.WHITE);
+        alternativa4jTextArea4.setLineWrap(true);
         alternativa4jTextArea4.setRows(5);
+        alternativa4jTextArea4.setWrapStyleWord(true);
         alternativa4jTextArea4.setBorder(null);
         alternativa4jTextArea4.setOpaque(false);
         alternativa4jScrollPane4.setViewportView(alternativa4jTextArea4);
@@ -317,7 +342,9 @@ public class TelaPartida extends javax.swing.JFrame {
         alternativa5jTextArea5.setColumns(20);
         alternativa5jTextArea5.setFont(new java.awt.Font("Segoe UI Semibold", 1, 25)); // NOI18N
         alternativa5jTextArea5.setForeground(Color.WHITE);
+        alternativa5jTextArea5.setLineWrap(true);
         alternativa5jTextArea5.setRows(5);
+        alternativa5jTextArea5.setWrapStyleWord(true);
         alternativa5jTextArea5.setBorder(null);
         alternativa5jTextArea5.setOpaque(false);
         alternativa5jScrollPane5.setViewportView(alternativa5jTextArea5);
@@ -551,7 +578,7 @@ public class TelaPartida extends javax.swing.JFrame {
         }
         usouPular = true;
        
-        carregarPergunta();
+        carregarPerguntaAleatoria();
         
         pularQuestaoCinzajLabel.setVisible(true);
         pularQuestaojButton1.setEnabled(false);
@@ -605,3 +632,4 @@ public class TelaPartida extends javax.swing.JFrame {
     private javax.swing.JButton pularQuestaojButton1;
     // End of variables declaration//GEN-END:variables
 }
+

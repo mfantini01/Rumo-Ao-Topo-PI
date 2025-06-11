@@ -25,6 +25,7 @@ public class TelaJogoIniciando extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 
                 dispose();
+
             }
         });
 

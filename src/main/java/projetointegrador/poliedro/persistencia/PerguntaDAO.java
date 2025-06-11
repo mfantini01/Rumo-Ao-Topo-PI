@@ -90,12 +90,19 @@ public class PerguntaDAO {
         return lista;
     }
 
-    public Pergunta buscarPerguntaAleatoria() throws Exception {
+    public Pergunta buscarPerguntaAleatoriaPorSerieEMateria(int idSerie, int idMateria) throws Exception {
         Pergunta pergunta = null;
         var conexao = new ConnectionFactory().obterConexao();
 
-        String sqlPergunta = "SELECT * FROM tb_pergunta ORDER BY RAND() LIMIT 1";
+        String sqlPergunta = """
+        SELECT * FROM tb_pergunta 
+        WHERE id_serie = ? AND id_materia = ? 
+        ORDER BY RAND() 
+        LIMIT 1
+    """;
         PreparedStatement ps = conexao.prepareStatement(sqlPergunta);
+        ps.setInt(1, idSerie);
+        ps.setInt(2, idMateria);
         ResultSet rs = ps.executeQuery();
 
         if (rs.next()) {
@@ -108,7 +115,12 @@ public class PerguntaDAO {
             pergunta.setNivelDificuldade(rs.getInt("dificuldade"));
             pergunta.setDica(rs.getString("dica_pergunta"));
 
-            String sqlRespostas = "SELECT r.texto_resposta, pr.correta FROM tb_resposta r JOIN tb_pergunta_resposta pr ON r.id_resposta = pr.id_resposta WHERE pr.id_pergunta = ?";
+            String sqlRespostas = """
+            SELECT r.texto_resposta, pr.correta 
+            FROM tb_resposta r 
+            JOIN tb_pergunta_resposta pr ON r.id_resposta = pr.id_resposta 
+            WHERE pr.id_pergunta = ?
+        """;
             PreparedStatement psRespostas = conexao.prepareStatement(sqlRespostas);
             psRespostas.setInt(1, idPergunta);
             ResultSet rsResp = psRespostas.executeQuery();
@@ -141,6 +153,8 @@ public class PerguntaDAO {
 
         return pergunta;
     }
+
+
    
 }
 

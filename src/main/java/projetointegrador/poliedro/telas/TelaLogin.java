@@ -127,10 +127,19 @@ public class TelaLogin extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(this, "Série não cadastrada para o usuário.");
                     } else if (serie.equalsIgnoreCase("1° ano")) {
                         JOptionPane.showMessageDialog(this, "Bem-vindo ao 1° ano! Prepare-se para começar sua jornada.");
+                        TelaSelecionarMateria sm = new TelaSelecionarMateria();
+                        sm.setVisible(true);
+                        this.dispose();
                     } else if (serie.equalsIgnoreCase("2° ano")) {
                         JOptionPane.showMessageDialog(this, "Você está no 2° ano. Continue firme nos estudos!");
+                        TelaSelecionarMateria sm = new TelaSelecionarMateria();
+                        sm.setVisible(true);
+                        this.dispose();
                     } else if (serie.equalsIgnoreCase("3° ano")) {
                         JOptionPane.showMessageDialog(this, "3° ano! Reta final, foco total nos objetivos!");
+                        TelaSelecionarMateria sm = new TelaSelecionarMateria();
+                        sm.setVisible(true);
+                        this.dispose();
                     } else {
                         JOptionPane.showMessageDialog(this, "Série não reconhecida: " + serie);
                     }
@@ -143,6 +152,7 @@ public class TelaLogin extends javax.swing.JFrame {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Sistema indisponível");
         }
+       
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void sairButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairButtonActionPerformed

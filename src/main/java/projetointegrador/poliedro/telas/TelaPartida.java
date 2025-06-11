@@ -14,11 +14,14 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import projetointegrador.poliedro.modelo.Pergunta;
 import projetointegrador.poliedro.modelo.PerguntaResposta;
+import projetointegrador.poliedro.modelo.Usuario;
 import projetointegrador.poliedro.persistencia.PerguntaDAO;
 
 
 public class TelaPartida extends javax.swing.JFrame {
 
+    private Usuario usuario;
+    private int idMateriaSelecionada;
     private Pergunta perguntaAtual;
     private boolean usouMeioMeio = false;
     private boolean usouDicaProfessor = false;
@@ -26,9 +29,14 @@ public class TelaPartida extends javax.swing.JFrame {
 
     
     
-    public TelaPartida() {
+    public TelaPartida(){
+    
+    }
+    public TelaPartida(Usuario usuario, int idMateriaSelecionada) {
+        this.usuario = usuario ; 
+        this.idMateriaSelecionada = idMateriaSelecionada ; 
         initComponents();
-        carregarPergunta();
+        carregarPerguntaAleatoria();
         setLocationRelativeTo(null);  // Centraliza a janela
         this.setResizable(false);
         this.setMaximizedBounds(this.getBounds());
@@ -71,10 +79,26 @@ public class TelaPartida extends javax.swing.JFrame {
         dicaProfessorCinzajLabel.setVisible(false);
         pularQuestaoCinzajLabel.setVisible(false);
     }
-    private void carregarPergunta() {
-        PerguntaDAO perguntaDAO = new PerguntaDAO();
-
+  
+    private void carregarPerguntaAleatoria() {
         try {
+
+            var perguntaDAO = new PerguntaDAO();
+            var serieUsuario = usuario.getSerie();
+            Pergunta pergunta = perguntaDAO.buscarPerguntaAleatoriaPorSerieEMateria(serieUsuario, idMateriaSelecionada);
+
+            if (pergunta != null) {
+                // Aqui você preenche sua interface com a pergunta e respostas
+                System.out.println("Pergunta: " + pergunta.getEnunciado());
+                pergunta.getRespostas().forEach(resp
+                        -> System.out.println("- " + resp.getResposta().getTexto())
+                );
+                // Atualize labels, botões etc.
+            } else {
+                JOptionPane.showMessageDialog(this, "Não há perguntas para essa matéria e série.");
+            }
+            perguntaAtual = pergunta; // Importante: guardar a pergunta atual para verificação depois
+
             perguntaAtual = perguntaDAO.buscarPerguntaAleatoria();
         } catch (Exception e) {
             e.printStackTrace();
@@ -105,38 +129,29 @@ public class TelaPartida extends javax.swing.JFrame {
         alternativa3jTextArea3.setVisible(true);
         alternativa4jTextArea4.setVisible(true);
         alternativa5jTextArea5.setVisible(true);
+// Define o enunciado
+            enunciado.setText(pergunta.getEnunciado());
 
-        
-        
+// Define as alternativas (até 5)
+            List<PerguntaResposta> respostas = pergunta.getRespostas();
 
-        if (perguntaAtual != null) {
-            enunciado.setText(perguntaAtual.getEnunciado());
-            List<PerguntaResposta> alternativas = perguntaAtual.getRespostas();
-
-            if (alternativas != null) {
-                if (alternativas.size() > 0) {
-                    alternativa1jTextArea1.setText(alternativas.get(0).getResposta().getTexto());
-                }
-                if (alternativas.size() > 1) {
-                    alternativa2jTextArea2.setText(alternativas.get(1).getResposta().getTexto());
-                }
-                if (alternativas.size() > 2) {
-                    alternativa3jTextArea3.setText(alternativas.get(2).getResposta().getTexto());
-                }
-                if (alternativas.size() > 3) {
-                    alternativa4jTextArea4.setText(alternativas.get(3).getResposta().getTexto());
-                }
-                if (alternativas.size() > 4) {
-                    alternativa5jTextArea5.setText(alternativas.get(4).getResposta().getTexto());
-                }
+            if (respostas.size() > 0) {
+                alternativa1jTextArea1.setText(respostas.get(0).getResposta().getTexto());
             }
-        } else {
-            enunciado.setText("Nenhuma pergunta encontrada no banco de dados.");
-            alternativa1jTextArea1.setText("");
-            alternativa2jTextArea2.setText("");
-            alternativa3jTextArea3.setText("");
-            alternativa4jTextArea4.setText("");
-            alternativa5jTextArea5.setText("");
+            if (respostas.size() > 1) {
+                alternativa2jTextArea2.setText(respostas.get(1).getResposta().getTexto());
+            }
+            if (respostas.size() > 2) {
+                alternativa3jTextArea3.setText(respostas.get(2).getResposta().getTexto());
+            }
+            if (respostas.size() > 3) {
+                alternativa4jTextArea4.setText(respostas.get(3).getResposta().getTexto());
+            }
+            if (respostas.size() > 4)
+                alternativa5jTextArea5.setText(respostas.get(4).getResposta().getTexto());
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Erro ao carregar pergunta: " + e.getMessage());
         }
     }
     private void verificarResposta(int indice) {
@@ -168,7 +183,7 @@ public class TelaPartida extends javax.swing.JFrame {
                 }
             }
 
-            carregarPergunta();
+            carregarPerguntaAleatoria();
         }
     }
     

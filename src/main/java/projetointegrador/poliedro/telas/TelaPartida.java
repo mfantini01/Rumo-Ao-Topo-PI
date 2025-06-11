@@ -22,6 +22,8 @@ public class TelaPartida extends javax.swing.JFrame {
     private boolean usouMeioMeio = false;
     private boolean usouDicaProfessor = false;
     private boolean usouPular = false;
+    private int totalRespondidas = 0;
+    private int totalAcertos = 0;
     public TelaPartida() {
 
     }
@@ -81,21 +83,21 @@ public class TelaPartida extends javax.swing.JFrame {
             Pergunta pergunta = perguntaDAO.buscarPerguntaAleatoriaPorSerieEMateria(serieUsuario, idMateriaSelecionada);
 
             if (pergunta != null) {
-                // Aqui você preenche sua interface com a pergunta e respostas
+                
                 System.out.println("Pergunta: " + pergunta.getEnunciado());
                 pergunta.getRespostas().forEach(resp
                         -> System.out.println("- " + resp.getResposta().getTexto())
                 );
-                // Atualize labels, botões etc.
+                
             } else {
                 JOptionPane.showMessageDialog(this, "Não há perguntas para essa matéria e série.");
             }
-            perguntaAtual = pergunta; // Importante: guardar a pergunta atual para verificação depois
+            perguntaAtual = pergunta; 
 
-// Define o enunciado
+
             enunciado.setText(pergunta.getEnunciado());
 
-// Define as alternativas (até 5)
+
             List<PerguntaResposta> respostas = pergunta.getRespostas();
 
             if (respostas.size() > 0) {
@@ -142,15 +144,21 @@ public class TelaPartida extends javax.swing.JFrame {
             return;
         }
 
-        int opcao = JOptionPane.showConfirmDialog(this,
-                "Tem certeza dessa resposta?", "Confirmação",
-                JOptionPane.YES_NO_OPTION);
+        int opcao = JOptionPane.showConfirmDialog(this, "Tem certeza dessa resposta?", "Confirmação", JOptionPane.YES_NO_OPTION);
 
         if (opcao == JOptionPane.YES_OPTION) {
+            totalRespondidas++;
+
             PerguntaResposta respostaSelecionada = perguntaAtual.getRespostas().get(indice);
 
             if (respostaSelecionada.isCorreta()) {
+                totalAcertos++;
                 JOptionPane.showMessageDialog(this, "Resposta correta! Próxima pergunta.");
+                if (totalAcertos == 10) {
+                    encerrarPartida();
+                } else {
+                    carregarPerguntaAleatoria();
+                }
             } else {
                 PerguntaResposta correta = perguntaAtual.getRespostas().stream()
                         .filter(PerguntaResposta::isCorreta)
@@ -158,14 +166,27 @@ public class TelaPartida extends javax.swing.JFrame {
                         .orElse(null);
 
                 if (correta != null) {
-                    JOptionPane.showMessageDialog(this,
-                            "Resposta errada!\nA correta era:\n" + correta.getResposta().getTexto());
+                    JOptionPane.showMessageDialog(this, "Resposta errada!\nA correta era:\n" + correta.getResposta().getTexto());
                 } else {
                     JOptionPane.showMessageDialog(this, "Resposta errada!");
                 }
+                encerrarPartida();
             }
+        }
+    }
+    
+    private void encerrarPartida() {
+        try {
+            PerguntaDAO dao = new PerguntaDAO();
+            String nomeMateria = dao.buscarNomeMateriaPorId(idMateriaSelecionada);
 
-            carregarPerguntaAleatoria();
+            PontuacaoFinalTela finalTela = new PontuacaoFinalTela(nomeMateria, totalRespondidas, totalAcertos);
+            finalTela.setVisible(true);
+            this.dispose(); // Fecha a tela atual
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Erro ao buscar nome da matéria.");
         }
     }
 

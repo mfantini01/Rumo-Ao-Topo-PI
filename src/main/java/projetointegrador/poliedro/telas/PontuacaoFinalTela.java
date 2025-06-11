@@ -4,11 +4,17 @@
  */
 package projetointegrador.poliedro.telas;
 
+import projetointegrador.poliedro.modelo.PontuacaoUtil;
+
 /**
  *
  * @author mathe
  */
 public class PontuacaoFinalTela extends javax.swing.JFrame {
+    
+    private String materia;
+    private int totalRespondidas;
+    private int totalAcertos;
 
     public PontuacaoFinalTela() {
         super("Rumo ao topo - Poliedro"); //Configura o título da tela 
@@ -20,6 +26,27 @@ public class PontuacaoFinalTela extends javax.swing.JFrame {
         acertosTextField.setBackground(new java.awt.Color(0, 0, 0, 0));
         dinheiroGanhoTextField.setBackground(new java.awt.Color(0, 0, 0, 0));
         materiaTextField.setBackground(new java.awt.Color(0, 0, 0, 0));
+    }
+    
+    public PontuacaoFinalTela(String materia, int totalRespondidas, int totalAcertos) {
+        this(); // chama o construtor padrão que já configura a UI
+        this.materia = materia;
+        this.totalRespondidas = totalRespondidas;
+        this.totalAcertos = totalAcertos;
+
+        preencherDados();
+    }
+    
+    private void preencherDados() {
+        materiaTextField.setText(materia);
+        questoesRespondidasTextField.setText(String.valueOf(totalRespondidas));
+        acertosTextField.setText(String.valueOf(totalAcertos));
+
+        int totalDinheiro = 0;
+        for (int i = 1; i <= totalAcertos; i++) {
+            totalDinheiro += PontuacaoUtil.getPontuacaoPorOrdem(i);
+        }
+        dinheiroGanhoTextField.setText(String.format("%,d", totalDinheiro).replace(",", ".")); // Formato: 780.000
     }
 
     /**

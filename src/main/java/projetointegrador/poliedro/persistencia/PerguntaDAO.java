@@ -4,6 +4,7 @@ package projetointegrador.poliedro.persistencia;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -153,6 +154,24 @@ public class PerguntaDAO {
 
         return pergunta;
     }
+    
+    public String buscarNomeMateriaPorId(int idMateria) throws Exception {
+        String sql = "SELECT nome_materia FROM tb_materia WHERE id_materia = ?";
+
+        try (
+                Connection conn = new ConnectionFactory().obterConexao(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, idMateria);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return rs.getString("nome_materia");
+            }
+        }
+
+        return "Desconhecida";
+    }
+
+
 
 
    

@@ -124,8 +124,7 @@ public class TelaLogin extends javax.swing.JFrame {
                     String serieTexto = dao.obterSerie(user);
 
                     if (serieTexto == null) {
-                        JOptionPane.showMessageDialog(this, "Série não cadastrada para o usuário.");
-                        return;  // impede continuar o fluxo sem série válida
+                        JOptionPane.showMessageDialog(this, "Série não cadastrada para o usuário.")
                     }
 
                     int serie = 0;
@@ -154,6 +153,7 @@ public class TelaLogin extends javax.swing.JFrame {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Sistema indisponível");
         }
+       
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void sairButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairButtonActionPerformed

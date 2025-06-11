@@ -2,10 +2,16 @@
 package projetointegrador.poliedro.telas;
 
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import projetointegrador.poliedro.modelo.Pergunta;
 import projetointegrador.poliedro.modelo.PerguntaResposta;
 import projetointegrador.poliedro.modelo.Usuario;
@@ -17,6 +23,11 @@ public class TelaPartida extends javax.swing.JFrame {
     private Usuario usuario;
     private int idMateriaSelecionada;
     private Pergunta perguntaAtual;
+    private boolean usouMeioMeio = false;
+    private boolean usouDicaProfessor = false;
+    private boolean usouPular = false;
+
+    
     
     public TelaPartida(){
     
@@ -64,9 +75,14 @@ public class TelaPartida extends javax.swing.JFrame {
             botao.setContentAreaFilled(false);
             botao.setBorderPainted(false);
         }
+        meioMeioCinzajLabel.setVisible(false);
+        dicaProfessorCinzajLabel.setVisible(false);
+        pularQuestaoCinzajLabel.setVisible(false);
     }
+  
     private void carregarPerguntaAleatoria() {
         try {
+
             var perguntaDAO = new PerguntaDAO();
             var serieUsuario = usuario.getSerie();
             Pergunta pergunta = perguntaDAO.buscarPerguntaAleatoriaPorSerieEMateria(serieUsuario, idMateriaSelecionada);
@@ -83,6 +99,36 @@ public class TelaPartida extends javax.swing.JFrame {
             }
             perguntaAtual = pergunta; // Importante: guardar a pergunta atual para verificação depois
 
+            perguntaAtual = perguntaDAO.buscarPerguntaAleatoria();
+        } catch (Exception e) {
+            e.printStackTrace();
+            enunciado.setText("Erro ao buscar pergunta no banco de dados.");
+            alternativa1jTextArea1.setText("");
+            alternativa2jTextArea2.setText("");
+            alternativa3jTextArea3.setText("");
+            alternativa4jTextArea4.setText("");
+            alternativa5jTextArea5.setText("");
+            return;
+        }
+        
+        
+        alternativa1jButton1.setEnabled(true);
+        alternativa2jButton1.setEnabled(true);
+        alternativa3jButton1.setEnabled(true);
+        alternativa4jButton1.setEnabled(true);
+        alternativa5jButton1.setEnabled(true);
+        
+        alternativa1jButton1.setVisible(true);
+        alternativa2jButton1.setVisible(true);
+        alternativa3jButton1.setVisible(true);
+        alternativa4jButton1.setVisible(true);
+        alternativa5jButton1.setVisible(true);
+        
+        alternativa1jTextArea1.setVisible(true);
+        alternativa2jTextArea2.setVisible(true);
+        alternativa3jTextArea3.setVisible(true);
+        alternativa4jTextArea4.setVisible(true);
+        alternativa5jTextArea5.setVisible(true);
 // Define o enunciado
             enunciado.setText(pergunta.getEnunciado());
 
@@ -157,6 +203,9 @@ public class TelaPartida extends javax.swing.JFrame {
         alternativa4jTextArea4 = new javax.swing.JTextArea();
         alternativa5jScrollPane5 = new javax.swing.JScrollPane();
         alternativa5jTextArea5 = new javax.swing.JTextArea();
+        dicaProfessorCinzajLabel = new javax.swing.JLabel();
+        pularQuestaoCinzajLabel = new javax.swing.JLabel();
+        meioMeioCinzajLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         meioMeiojButton1 = new javax.swing.JButton();
         dicaProfessorjButton1 = new javax.swing.JButton();
@@ -264,6 +313,33 @@ public class TelaPartida extends javax.swing.JFrame {
         getContentPane().add(alternativa5jScrollPane5);
         alternativa5jScrollPane5.setBounds(214, 576, 310, 60);
 
+        dicaProfessorCinzajLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/BotaoDicaProfessorCinza.png"))); // NOI18N
+        dicaProfessorCinzajLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dicaProfessorCinzajLabelMouseClicked(evt);
+            }
+        });
+        getContentPane().add(dicaProfessorCinzajLabel);
+        dicaProfessorCinzajLabel.setBounds(760, 330, 150, 120);
+
+        pularQuestaoCinzajLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/BotaoPularCinza.png"))); // NOI18N
+        pularQuestaoCinzajLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pularQuestaoCinzajLabelMouseClicked(evt);
+            }
+        });
+        getContentPane().add(pularQuestaoCinzajLabel);
+        pularQuestaoCinzajLabel.setBounds(900, 330, 140, 120);
+
+        meioMeioCinzajLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/BotaoCinquentaCinquentaCinza.png"))); // NOI18N
+        meioMeioCinzajLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                meioMeioCinzajLabelMouseClicked(evt);
+            }
+        });
+        getContentPane().add(meioMeioCinzajLabel);
+        meioMeioCinzajLabel.setBounds(610, 330, 140, 120);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/TelaPerguntas.png"))); // NOI18N
         jLabel1.setText("jLabel1");
         jLabel1.setMaximumSize(new java.awt.Dimension(1080, 720));
@@ -272,7 +348,9 @@ public class TelaPartida extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 1080, 720);
 
+        meioMeiojButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/BotaoAdicionarPerguntas (1).png"))); // NOI18N
         meioMeiojButton1.setText("jButton1");
+        meioMeiojButton1.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/projetointegrador/poliedro/teste/imagem/folder/BotaoAdicionarPerguntas (1).png"))); // NOI18N
         meioMeiojButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 meioMeiojButton1ActionPerformed(evt);
@@ -373,18 +451,112 @@ public class TelaPartida extends javax.swing.JFrame {
     }//GEN-LAST:event_alternativa5jButton1ActionPerformed
 
     private void meioMeiojButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_meioMeiojButton1ActionPerformed
-        // TODO add your handling code here:
+        if (usouMeioMeio) {
+            JOptionPane.showMessageDialog(this, "Você já usou a dica 50/50.");
+            return;
+        }
+
+        usouMeioMeio = true;
+
+        List<JButton> botoes = Arrays.asList(
+                alternativa1jButton1,
+                alternativa2jButton1,
+                alternativa3jButton1,
+                alternativa4jButton1,
+                alternativa5jButton1
+        );
+
+        List<JTextArea> textos = Arrays.asList(
+                alternativa1jTextArea1,
+                alternativa2jTextArea2,
+                alternativa3jTextArea3,
+                alternativa4jTextArea4,
+                alternativa5jTextArea5
+        );
+
+        String respostaCorreta = perguntaAtual.getRespostas()
+                .stream()
+                .filter(PerguntaResposta::isCorreta)
+                .findFirst()
+                .map(pr -> pr.getResposta().getTexto())
+                .orElse("");
+
+        JButton botaoCorreto = null;
+        JTextArea textoCorreto = null;
+        List<Integer> indicesErrados = new ArrayList<>();
+
+        for (int i = 0; i < perguntaAtual.getRespostas().size(); i++) {
+            String texto = perguntaAtual.getRespostas().get(i).getResposta().getTexto();
+            if (texto.equals(respostaCorreta)) {
+                botaoCorreto = botoes.get(i);
+                textoCorreto = textos.get(i);
+            } else {
+                indicesErrados.add(i);
+            }
+        }
+
+        Collections.shuffle(indicesErrados);
+        int indiceErradoVisivel = indicesErrados.get(0);
+
+        
+        for (int i = 1; i < indicesErrados.size(); i++) {
+            int idx = indicesErrados.get(i);
+            botoes.get(idx).setVisible(false);
+            textos.get(idx).setVisible(false);
+        }
+        
+        botaoCorreto.setVisible(true);
+        textoCorreto.setVisible(true);
+
+        botoes.get(indiceErradoVisivel).setVisible(true);
+        textos.get(indiceErradoVisivel).setVisible(true);
+        
+        meioMeioCinzajLabel.setVisible(true);   
+        meioMeiojButton1.setEnabled(false);
     }//GEN-LAST:event_meioMeiojButton1ActionPerformed
 
     private void dicaProfessorjButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dicaProfessorjButton1ActionPerformed
-        
+        if (usouDicaProfessor) {
+            JOptionPane.showMessageDialog(this, "Você já usou a dica do professor.");
+            return;
+        }
+        usouDicaProfessor = true;
+
+        String dica = perguntaAtual.getDica();
+        if (dica != null && !dica.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Dica do professor: " + dica);
+        } else {
+            JOptionPane.showMessageDialog(this, "Não há dica cadastrada para esta pergunta.");
+        }
+        dicaProfessorCinzajLabel.setVisible(true);
+        dicaProfessorjButton1.setEnabled(false);
     }//GEN-LAST:event_dicaProfessorjButton1ActionPerformed
 
     private void pularQuestaojButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pularQuestaojButton1ActionPerformed
-        // TODO add your handling code here:
+        if (usouPular) {
+            JOptionPane.showMessageDialog(this, "Você já usou a dica de pular pergunta.");
+            return;
+        }
+        usouPular = true;
+       
+        carregarPergunta();
+        
+        pularQuestaoCinzajLabel.setVisible(true);
+        pularQuestaojButton1.setEnabled(false);
     }//GEN-LAST:event_pularQuestaojButton1ActionPerformed
 
-    
+    private void meioMeioCinzajLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_meioMeioCinzajLabelMouseClicked
+        JOptionPane.showMessageDialog(this, "Você já usou a dica 50/50.");
+    }//GEN-LAST:event_meioMeioCinzajLabelMouseClicked
+
+    private void pularQuestaoCinzajLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pularQuestaoCinzajLabelMouseClicked
+        JOptionPane.showMessageDialog(this, "Você já usou a dica de pular pergunta.");
+    }//GEN-LAST:event_pularQuestaoCinzajLabelMouseClicked
+
+    private void dicaProfessorCinzajLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dicaProfessorCinzajLabelMouseClicked
+        JOptionPane.showMessageDialog(this, "Você já usou a dica do professor.");
+    }//GEN-LAST:event_dicaProfessorCinzajLabelMouseClicked
+  
     public static void main(String args[]) {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -410,11 +582,14 @@ public class TelaPartida extends javax.swing.JFrame {
     private javax.swing.JButton alternativa5jButton1;
     private javax.swing.JScrollPane alternativa5jScrollPane5;
     private javax.swing.JTextArea alternativa5jTextArea5;
+    private javax.swing.JLabel dicaProfessorCinzajLabel;
     private javax.swing.JButton dicaProfessorjButton1;
     private javax.swing.JTextArea enunciado;
     private javax.swing.JScrollPane enunciadojScrollPane1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel meioMeioCinzajLabel;
     private javax.swing.JButton meioMeiojButton1;
+    private javax.swing.JLabel pularQuestaoCinzajLabel;
     private javax.swing.JButton pularQuestaojButton1;
     // End of variables declaration//GEN-END:variables
 }

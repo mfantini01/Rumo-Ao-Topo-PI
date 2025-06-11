@@ -22,6 +22,19 @@ public class TelaPartida extends javax.swing.JFrame {
     private boolean usouMeioMeio = false;
     private boolean usouDicaProfessor = false;
     private boolean usouPular = false;
+
+    private int totalRespondidas = 0;
+    private int totalAcertos = 0;
+    private String materiaSelecionada;
+
+    
+    public TelaPartida(String materiaSelecionada) {
+        this();
+        this.materiaSelecionada = materiaSelecionada;
+    }
+    
+
+
     public TelaPartida() {
 
     }
@@ -30,14 +43,22 @@ public class TelaPartida extends javax.swing.JFrame {
         this.usuario = usuario;
         this.idMateriaSelecionada = idMateriaSelecionada;
         initComponents();
-        carregarPerguntaAleatoria();
-        setLocationRelativeTo(null);  // Centraliza a janela
+
+        carregarPergunta();
+        setLocationRelativeTo(null);  
         this.setResizable(false);
         this.setMaximizedBounds(this.getBounds());
-        setLocationRelativeTo(null); //centraliza a tela quando ela aparece
+        setLocationRelativeTo(null); 
+
+        carregarPerguntaAleatoria();
+        setLocationRelativeTo(null);  
+        this.setResizable(false);
+        this.setMaximizedBounds(this.getBounds());
+        setLocationRelativeTo(null); 
         meioMeioCinzajLabel.setVisible(false);
         dicaProfessorCinzajLabel.setVisible(false);
         pularQuestaoCinzajLabel.setVisible(false);
+
         enunciadojScrollPane1.getViewport().setOpaque(false);
         enunciadojScrollPane1.setBorder(null);
         enunciadojScrollPane1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
@@ -81,21 +102,21 @@ public class TelaPartida extends javax.swing.JFrame {
             Pergunta pergunta = perguntaDAO.buscarPerguntaAleatoriaPorSerieEMateria(serieUsuario, idMateriaSelecionada);
 
             if (pergunta != null) {
-                // Aqui você preenche sua interface com a pergunta e respostas
+               
                 System.out.println("Pergunta: " + pergunta.getEnunciado());
                 pergunta.getRespostas().forEach(resp
                         -> System.out.println("- " + resp.getResposta().getTexto())
                 );
-                // Atualize labels, botões etc.
+               
             } else {
                 JOptionPane.showMessageDialog(this, "Não há perguntas para essa matéria e série.");
             }
             perguntaAtual = pergunta; // Importante: guardar a pergunta atual para verificação depois
 
-// Define o enunciado
+
             enunciado.setText(pergunta.getEnunciado());
 
-// Define as alternativas (até 5)
+
             List<PerguntaResposta> respostas = pergunta.getRespostas();
 
             if (respostas.size() > 0) {
@@ -147,10 +168,23 @@ public class TelaPartida extends javax.swing.JFrame {
                 JOptionPane.YES_NO_OPTION);
 
         if (opcao == JOptionPane.YES_OPTION) {
+            totalRespondidas++;
+
             PerguntaResposta respostaSelecionada = perguntaAtual.getRespostas().get(indice);
 
             if (respostaSelecionada.isCorreta()) {
+                totalAcertos++;
+
                 JOptionPane.showMessageDialog(this, "Resposta correta! Próxima pergunta.");
+
+                if (totalAcertos == 10) {
+                    
+                    abrirTelaPontuacaoFinal();
+                    return;
+                }
+
+                carregarPergunta();
+
             } else {
                 PerguntaResposta correta = perguntaAtual.getRespostas().stream()
                         .filter(PerguntaResposta::isCorreta)
@@ -163,7 +197,20 @@ public class TelaPartida extends javax.swing.JFrame {
                 } else {
                     JOptionPane.showMessageDialog(this, "Resposta errada!");
                 }
+
+
+                
+                abrirTelaPontuacaoFinal();
             }
+        }
+    }
+    
+    private void abrirTelaPontuacaoFinal() {
+        PontuacaoFinalTela finalTela = new PontuacaoFinalTela(materiaSelecionada, totalRespondidas, totalAcertos);
+        finalTela.setVisible(true);
+        this.dispose(); // fecha tela atual
+    }
+    
 
             carregarPerguntaAleatoria();
         }

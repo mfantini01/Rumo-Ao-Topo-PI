@@ -15,6 +15,7 @@ public class Usuario {
     private String email, tipo, nome, senha;
     private int codigo;
     private int pontuacaoMensal;
+    private int serie;
     
     public Usuario(String email, String senha) {
         this.email = email;

@@ -121,19 +121,30 @@ public class TelaLogin extends javax.swing.JFrame {
                     opcao.setVisible(true);
                     this.dispose();
                 } else {
-                    String serie = dao.obterSerie(user);
+                    String serieTexto = dao.obterSerie(user);
 
-                    if (serie == null) {
+                    if (serieTexto == null) {
                         JOptionPane.showMessageDialog(this, "Série não cadastrada para o usuário.");
-                    } else if (serie.equalsIgnoreCase("1° ano")) {
-                        JOptionPane.showMessageDialog(this, "Bem-vindo ao 1° ano! Prepare-se para começar sua jornada.");
-                    } else if (serie.equalsIgnoreCase("2° ano")) {
-                        JOptionPane.showMessageDialog(this, "Você está no 2° ano. Continue firme nos estudos!");
-                    } else if (serie.equalsIgnoreCase("3° ano")) {
-                        JOptionPane.showMessageDialog(this, "3° ano! Reta final, foco total nos objetivos!");
-                    } else {
-                        JOptionPane.showMessageDialog(this, "Série não reconhecida: " + serie);
+                        return;  // impede continuar o fluxo sem série válida
                     }
+
+                    int serie = 0;
+                    if (serieTexto.contains("1° ano")) {
+                        serie = 1;
+                    } else if (serieTexto.contains("2° ano")) {
+                        serie = 2;
+                    } else if (serieTexto.contains("3° ano")) {
+                        serie = 3;
+                    }
+
+                    user.setSerie(serie);
+
+                    Usuario usuarioLogado = new Usuario(email, senha);
+                    usuarioLogado.setSerie(serie);
+
+                    TelaSelecionarMateria telaSelecionar = new TelaSelecionarMateria(usuarioLogado);
+                    telaSelecionar.setVisible(true);
+                    this.dispose();
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Usuário/Senha inválido(s)");

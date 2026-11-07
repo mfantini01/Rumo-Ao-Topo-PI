@@ -1,23 +1,32 @@
 # Rumo ao Topo — Poliedro
 
-Educational quiz game for high school students, inspired by the "Show do Milhão" format.
-Developed as an integrative project for Poliedro, applying OOP and DAO pattern for database integration.
+Jogo educativo desenvolvido para tornar o aprendizado de alunos do Ensino Médio mais dinâmico e interativo, inspirado no formato do programa **Show do Milhão**.
 
-## Features
+O jogo apresenta perguntas de diferentes disciplinas, séries e níveis de dificuldade, com sistema de pontuação, ranking, dicas e gerenciamento de questões e usuários.
 
-- Multi-discipline questions (various subjects and difficulty levels)
-- Scoring system and global ranking
-- Hints and wrong-answer elimination
-- Question and user management panel
+---
 
-## Stack
+## Funcionalidades
+
+- Perguntas multidisciplinares com níveis de dificuldade
+- Sistema de pontuação e ranking global
+- Dicas e eliminação de alternativas incorretas
+- Painel administrativo para gerenciamento de questões e usuários
+
+---
+
+## Tecnologias
 
 Java · Java Swing · MySQL
 
-## Architecture
+---
 
-Object-Oriented Programming (OOP) with DAO pattern for MySQL integration.
+## Arquitetura
 
-## Context
+Programação Orientada a Objetos (POO) com padrão DAO para integração com o banco de dados MySQL.
 
-Integrative project — Poliedro educational system.
+---
+
+## Contexto
+
+Projeto Integrador desenvolvido para o sistema educacional **Poliedro**.
